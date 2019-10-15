@@ -1,7 +1,9 @@
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
-import javax.persistence.*;
-import java.util.Set;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
 
 @Entity
@@ -14,13 +16,6 @@ public class Team {
     private String name;
     private String description;
     private Double rating;
-
-    @ElementCollection(targetClass=Division.class)
-    @Column(name="division",nullable = false)
-    @CollectionTable(name="team_division", joinColumns = {@JoinColumn(name="team_id")})
-    public Set<Division> divisions;
-
-
 
     public Team(){
     }
@@ -61,10 +56,5 @@ public class Team {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    @Override
-    public String toString(){
-        return this.name;
     }
 }
