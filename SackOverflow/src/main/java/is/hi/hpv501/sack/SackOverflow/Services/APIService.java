@@ -9,7 +9,7 @@ import java.io.IOException;
 public interface APIService {
     String getAllTeams() throws  IOException;
 
-    String run(String url) throws IOException;
+  //  String run(String url) throws IOException;
 }
 
 

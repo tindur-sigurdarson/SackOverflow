@@ -2,6 +2,7 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
 
         import is.hi.hpv501.sack.SackOverflow.Entities.Team;
         import is.hi.hpv501.sack.SackOverflow.Services.APIService;
+        import is.hi.hpv501.sack.SackOverflow.Services.Implementations.APIServiceImplementation;
         import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -18,13 +19,21 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
 public class HomeController {
 
     private TeamService teamService;
-    private APIService apiService;
+    private APIServiceImplementation apiService = new APIServiceImplementation();
     @Autowired
     public HomeController(TeamService teamService){this.teamService = teamService;}
 
     @RequestMapping("/")
     public String Home(Model model){
         model.addAttribute("teams", teamService.findAll());
+        String teams = null;
+        try {
+            teams = apiService.getAllTeams();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println(teams);
+        model.addAttribute("allTeams",teams);
         return "Velkominn";
     }
 
@@ -51,13 +60,18 @@ public class HomeController {
         return "Velkominn";
     }
 
+
     @RequestMapping(value="/getAllTeams", method = RequestMethod.GET)
     public String getAllTeams(Model model) throws IOException {
 
         String teams = apiService.getAllTeams();
+        System.out.println(teams);
+
 
         model.addAttribute("allTeams",teams);
+
+
+
         return "Velkominn";
     }
-
 }
