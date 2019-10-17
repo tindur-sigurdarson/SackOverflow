@@ -1,6 +1,7 @@
 package is.hi.hpv501.sack.SackOverflow.Controllers;
 
         import is.hi.hpv501.sack.SackOverflow.Entities.Team;
+        import is.hi.hpv501.sack.SackOverflow.Services.APIService;
         import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
         import org.springframework.beans.factory.annotation.Autowired;
         import org.springframework.stereotype.Controller;
@@ -11,11 +12,13 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
         import org.springframework.web.bind.annotation.RequestMethod;
 
         import javax.validation.Valid;
+        import java.io.IOException;
 
 @Controller
 public class HomeController {
 
     private TeamService teamService;
+    private APIService apiService;
     @Autowired
     public HomeController(TeamService teamService){this.teamService = teamService;}
 
@@ -47,4 +50,14 @@ public class HomeController {
         model.addAttribute("teams", teamService.findAll());
         return "Velkominn";
     }
+
+    @RequestMapping(value="/getAllTeams", method = RequestMethod.GET)
+    public String getAllTeams(Model model) throws IOException {
+
+        String teams = apiService.getAllTeams();
+
+        model.addAttribute("allTeams",teams);
+        return "Velkominn";
+    }
+
 }
