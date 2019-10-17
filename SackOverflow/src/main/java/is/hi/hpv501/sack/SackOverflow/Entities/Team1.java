@@ -39,7 +39,7 @@ public class Team {
         this.shortName = shortName;
     }
 
-    public long getCode() {
+    public long getCodes() {
         return code;
     }
 
