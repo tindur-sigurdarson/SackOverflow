@@ -7,13 +7,15 @@ import java.io.IOException;
 
 public class APIServiceImplementation implements APIService {
 
+    private String linkur = "https://www.fantasyfootballnerd.com/service/";
+    private String apiKey = "tehrjtr76vjg";
+
     public APIServiceImplementation() {
     }
 
     @Override
-    public String getAllTeams() throws IOException {
-       // String apiKey = "tehrjtr76vjg";
-        String teamUrl = "https://www.fantasyfootballnerd.com/service/nfl-teams/json/tehrjtr76vjg/";
+    public String getAllPlayers() throws IOException {
+        String teamUrl = linkur+"players/json/"+apiKey;
         OkHttpClient client = new OkHttpClient();
 
         Request request = new Request.Builder()
@@ -28,39 +30,65 @@ public class APIServiceImplementation implements APIService {
             e.printStackTrace();
         }
         return "villa";
-     /*   Call call = client.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                try {
-                    throw new IOException(e);
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String resp = response.body().string();
-                if(response.isSuccessful()){
-
-                }
-            }
-        }); */
     }
 
-  /*  @Override
-    public String run(String url) throws IOException {
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
+    @Override
+    public String getAllTeams() throws IOException {
+        String teamUrl = linkur+"nfl-teams/json/"+apiKey;
+        OkHttpClient client = new OkHttpClient();
 
-        try {
+        Request request = new Request.Builder()
+                .url(teamUrl)
+                .build();
+        try{
             Response response = client.newCall(request).execute();
             return response.body().string();
+
+        }catch (IOException e){
+
+            e.printStackTrace();
         }
+        return "villa";
     }
 
-   */
+    @Override
+    public String getGamesByWeek(int weekNr) throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getGameScoreByDay(String date, String away, String home, int nr) throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getGamePlayByPlay(String date, String away, String home, int nr) throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getPlayerStats(String playerName) throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getTeamStats(String teamName) throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getLatestUpdates() throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getAllInjuredPlayers() throws IOException {
+        return null;
+    }
+
+    @Override
+    public String getInjuredPlayersByTeam(String teamName) throws IOException {
+        return null;
+    }
 
 }
