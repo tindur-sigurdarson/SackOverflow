@@ -1,3 +1,4 @@
+
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
 import javax.persistence.Entity;
@@ -14,7 +15,7 @@ public class Player {
     private long id;
     private String name;
     private String position;
-    private String jersey;
+    private Double jersey;
     private String team;
 
 
@@ -47,11 +48,11 @@ public class Player {
         return jersey;
     }
 
-    public void setJersey(String jersey) {
+    public void setJersey(Double jersey) {
         this.jersey = jersey;
     }
 
-    public long getTeam() {
+    public String getTeam() {
         return team;
     }
 
