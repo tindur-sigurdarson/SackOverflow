@@ -12,8 +12,8 @@ public class Team {
     private long id;
 
     private String name;
-    private String description;
-    private Double rating;
+    private String shortName;
+    private String record;
 
     @ElementCollection(targetClass=Division.class)
     @Column(name="division",nullable = false)
@@ -25,10 +25,10 @@ public class Team {
     public Team(){
     }
 
-    public Team(String name, String description, Double rating) {
+    public Team(String name, String shortName, String record) {
         this.name = name;
-        this.description = description;
-        this.rating = rating;
+        this.shortName = shortName;
+        this.record = record;
     }
 
     public String getName() {
@@ -39,20 +39,20 @@ public class Team {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getRecord() {
+        return record;
     }
 
-    public Double getRating() {
-        return rating;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public void setRating(Double rating) {
-        this.rating = rating;
+    public void setRecord(String record) {
+        this.record = record;
     }
 
     public long getId() {

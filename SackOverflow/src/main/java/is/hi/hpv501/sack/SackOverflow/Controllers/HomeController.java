@@ -25,8 +25,22 @@ public class HomeController {
 
     @RequestMapping("/")
     public String Home(Model model){
+
+        Team pats = new Team("New England Patriots","NE","6-0");
+        Team jags = new Team("Jacksonville Jaguars", "JAX", "2-4");
+        teamService.save(pats);
+        teamService.save(jags);
+
+        try {
+            String api = apiService.getAllPlayers();
+            System.out.println(api);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
         model.addAttribute("teams", teamService.findAll());
-        String teams = null;
+   /*     String teams = null;
         try {
             teams = apiService.getAllTeams();
         } catch (IOException e) {
@@ -34,6 +48,8 @@ public class HomeController {
         }
         System.out.println(teams);
         model.addAttribute("allTeams",teams);
+    */
+
         return "Velkominn";
     }
 
@@ -69,8 +85,6 @@ public class HomeController {
 
 
         model.addAttribute("allTeams",teams);
-
-
 
         return "Velkominn";
     }
