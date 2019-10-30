@@ -1,61 +1,50 @@
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-
-@Entity
 public class Player {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
-    private String position;
-    private String jersey;
-    private String team;
-
-
-    public Player(){
+    public int getId() {
+        return id;
     }
 
-    public Player(String name, String position, String team) {
-        this.name = name;
-        this.position = position;
-        this.team = team;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getPosition() {
-        return position;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public Double getJersey() {
-        return jersey;
+    public String getPrimaryPosition() {
+        return primaryPosition;
     }
 
-    public void setJersey(String jersey) {
-        this.jersey = jersey;
+    public void setPrimaryPosition(String primaryPosition) {
+        this.primaryPosition = primaryPosition;
     }
 
-    public long getTeam() {
-        return team;
+    public int getJerseyNumber() {
+        return jerseyNumber;
     }
 
-    public void setTeam(String team) {
-        this.team = team;
+    public void setJerseyNumber(int jerseyNumber) {
+        this.jerseyNumber = jerseyNumber;
     }
+
+    private int id;
+    private String firstName;
+    private String lastName;
+    private String primaryPosition;
+    private int jerseyNumber;
+
 }

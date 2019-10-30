@@ -7,25 +7,23 @@ import java.util.Set;
 @Entity
 public class Team {
 
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+
 
     private String name;
     private String description;
-    private Double rating;
-
-    @ElementCollection(targetClass=Division.class)
-    @Column(name="division",nullable = false)
-    @CollectionTable(name="team_division", joinColumns = {@JoinColumn(name="team_id")})
-    public Set<Division> divisions;
-
+    private String rating;
 
 
     public Team(){
     }
 
-    public Team(String name, String description, Double rating) {
+    public Team( String name, String description, String rating) {
+
         this.name = name;
         this.description = description;
         this.rating = rating;
@@ -47,24 +45,22 @@ public class Team {
         this.description = description;
     }
 
-    public Double getRating() {
+    public String getRating() {
         return rating;
     }
 
-    public void setRating(Double rating) {
+    public void setRating(String rating) {
         this.rating = rating;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     @Override
-    public String toString(){
-        return this.name;
+    public String toString() {
+        return "Team{" +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", rating='" + rating + '\'' +
+                '}';
     }
+
 }
