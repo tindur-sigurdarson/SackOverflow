@@ -45,7 +45,7 @@ public class APIServiceImplementation implements APIService {
         try {
             String token = apiKey+":3DUbP77j";
             byte[] src = token.getBytes();
-            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/latest/cumulative_player_stats.team=ne.json");
+            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/latest/cumulative_player_stats.json");
             String encoding = Base64.getUrlEncoder().encodeToString(src);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
