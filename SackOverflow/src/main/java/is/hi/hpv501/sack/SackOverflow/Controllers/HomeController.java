@@ -34,7 +34,7 @@ public class HomeController {
         Team jags = new Team("Jacksonville Jaguars", "JAX", "2-4");
         teamService.save(pats);
         teamService.save(jags);
-
+    /*
         try {
             String api = apiService.getAllPlayers();
             System.out.println(api);
@@ -44,7 +44,7 @@ public class HomeController {
 
 
         model.addAttribute("teams", teamService.findAll());
-   /*     String teams = null;
+        String teams = null;
         try {
             teams = apiService.getAllTeams();
         } catch (IOException e) {
