@@ -1,44 +1,32 @@
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 
 @Entity
 public class Team {
 
+
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
 
-    private String city;
+
     private String name;
-    private String abbreviation;
-    private int rank;
-    private int gamesPlayed;
-    private int passYards;
-    private int rushYards;
-    private int sacks;
-    private int interceptions;
-    private int totalTD;
+    private String description;
+    private String rating;
 
 
     public Team(){
     }
 
-    public long getId() {
-        return id;
-    }
+    public Team( String name, String description, String rating) {
 
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
+        this.name = name;
+        this.description = description;
+        this.rating = rating;
     }
 
     public String getName() {
@@ -49,67 +37,30 @@ public class Team {
         this.name = name;
     }
 
-    public String getAbbreviation() {
-        return abbreviation;
+    public String getDescription() {
+        return description;
     }
 
-    public void setAbbreviation(String abbreviation) {
-        this.abbreviation = abbreviation;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
-    public int getRank() {
-        return rank;
+    public String getRating() {
+        return rating;
     }
 
-    public void setRank(int rank) {
-        this.rank = rank;
+    public void setRating(String rating) {
+        this.rating = rating;
     }
 
-    public int getGamesPlayed() {
-        return gamesPlayed;
+
+    @Override
+    public String toString() {
+        return "Team{" +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", rating='" + rating + '\'' +
+                '}';
     }
 
-    public void setGamesPlayed(int gamesPlayed) {
-        this.gamesPlayed = gamesPlayed;
-    }
-
-    public int getPassYards() {
-        return passYards;
-    }
-
-    public void setPassYards(int passYards) {
-        this.passYards = passYards;
-    }
-
-    public int getRushYards() {
-        return rushYards;
-    }
-
-    public void setRushYards(int rushYards) {
-        this.rushYards = rushYards;
-    }
-
-    public int getSacks() {
-        return sacks;
-    }
-
-    public void setSacks(int sacks) {
-        this.sacks = sacks;
-    }
-
-    public int getInterceptions() {
-        return interceptions;
-    }
-
-    public void setInterceptions(int interceptions) {
-        this.interceptions = interceptions;
-    }
-
-    public int getTotalTD() {
-        return totalTD;
-    }
-
-    public void setTotalTD(int totalTD) {
-        this.totalTD = totalTD;
-    }
 }
