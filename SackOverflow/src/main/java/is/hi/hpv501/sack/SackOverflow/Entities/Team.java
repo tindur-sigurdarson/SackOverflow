@@ -7,26 +7,28 @@ import java.util.Set;
 @Entity
 public class Team {
 
-
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+    private long id;
 
     private String name;
-    private String description;
-    private String rating;
+    private String shortName;
+    private String record;
+
+    @ElementCollection(targetClass=Division.class)
+    @Column(name="division",nullable = false)
+    @CollectionTable(name="team_division", joinColumns = {@JoinColumn(name="team_id")})
+    public Set<Division> divisions;
+
 
 
     public Team(){
     }
 
-    public Team( String name, String description, String rating) {
-
+    public Team(String name, String shortName, String record) {
         this.name = name;
-        this.description = description;
-        this.rating = rating;
+        this.shortName = shortName;
+        this.record = record;
     }
 
     public String getName() {
@@ -37,30 +39,32 @@ public class Team {
         this.name = name;
     }
 
-    public String getDescription() {
-        return description;
+    public String getShortName() {
+        return shortName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getRecord() {
+        return record;
     }
 
-    public String getRating() {
-        return rating;
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setRecord(String record) {
+        this.record = record;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Override
-    public String toString() {
-        return "Team{" +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", rating='" + rating + '\'' +
-                '}';
+    public String toString(){
+        return this.name;
     }
-
 }
