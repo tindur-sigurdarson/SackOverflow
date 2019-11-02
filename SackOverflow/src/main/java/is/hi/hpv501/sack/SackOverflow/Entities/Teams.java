@@ -1,36 +1,5 @@
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
     public enum Teams {
-        ARI,
-        ATL,
-        BAL,
-        BUF,
-        CAR,
-        CHI,
-        CIN,
-        CLE,
-        DAL,
-        DEN,
-        DET,
-        GB,
-        HOU,
-        IND,
-        JAX,
-        KC,
-        MIA,
-        MIN,
-        NE,
-        NO,
-        NYG,
-        NYJ,
-        OAK,
-        PHI,
-        PIT,
-        SD,
-        SEA,
-        SF,
-        STL,
-        TB,
-        TEN,
-        WAS
+
     }

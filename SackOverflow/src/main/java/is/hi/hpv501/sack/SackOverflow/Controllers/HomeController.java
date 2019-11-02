@@ -25,6 +25,7 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
         import java.io.IOException;
         import java.util.ArrayList;
         import java.util.HashMap;
+        import java.util.List;
 
 @Controller
 public class HomeController {
@@ -91,7 +92,7 @@ public class HomeController {
     @RequestMapping(value="/getAllTeams", method = RequestMethod.GET)
     public String getAllTeams(Model model) throws IOException {
 
-        String teams = apiService.getAllTeams();
+        List teams = apiService.getAllTeams();
 
 
 
@@ -108,7 +109,7 @@ public class HomeController {
             JSONObject obj = new JSONObject(playerAPI);
             JSONObject obj2 = obj.getJSONObject("cumulativeplayerstats");
             JSONArray jsonArr = obj2.getJSONArray("playerstatsentry");
-            ArrayList<Player> leikmannalisti = new ArrayList<Player>();
+            List<Player> leikmannalisti = new ArrayList<Player>();
             for (int i = 0; i < jsonArr.length(); i++) {
                 Player play = new Player();
                 JSONObject c = (JSONObject) jsonArr.get(i);
@@ -129,8 +130,6 @@ public class HomeController {
                     String lid2 = "Free Agent";
                     play.setTeam(lid2);
                 }
-
-
 
                 JSONObject stats = c.getJSONObject("stats");
                 //Games Played
