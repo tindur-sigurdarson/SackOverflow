@@ -1,10 +1,12 @@
 package is.hi.hpv501.sack.SackOverflow.Services;
 
+import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
+
 import java.io.IOException;
 import java.util.List;
 
 public interface APIService {
-    List<String> getAllTeams() throws  IOException;
+    List<Teams> getAllTeams() throws  IOException;
 
     String getAllPlayers() throws IOException;
 

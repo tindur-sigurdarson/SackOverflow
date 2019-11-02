@@ -1,5 +1,6 @@
 package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
+import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
 import is.hi.hpv501.sack.SackOverflow.Services.APIService;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -70,7 +71,7 @@ public class APIServiceImplementation implements APIService {
     }
 
     @Override
-    public List<String> getAllTeams() throws IOException {
+    public List<Teams> getAllTeams() throws IOException {
         try {
             String token = apiKey+":3DUbP77j";
             byte[] src = token.getBytes();
@@ -83,25 +84,40 @@ public class APIServiceImplementation implements APIService {
             InputStream content = (InputStream)connection.getInputStream();
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
-            List<String> listi = new ArrayList<>();
+            List<Teams> listi = new ArrayList<Teams>();
+
             String line;
             while ((line = in.readLine()) != null) {
                 //System.out.println(line);
                 System.out.println("virkarrrr");
+                //  JSON obj búinn til
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("divisionteamstandings");
+                // JSON array búið til
                 JSONArray divi = obj2.getJSONArray("division");
+                // sótt deildir
                 for (int i =0; i<divi.length(); i++) {
                     JSONObject c = (JSONObject) divi.get(i);
+
                     JSONArray teamentry = c.getJSONArray("teamentry");
+                    // sótt upplýsingar um lið
                     for (int j = 0; j < teamentry.length(); j++) {
+                        //Nýtt lið búið til
+                        Teams lidstats = new Teams();
+
                         JSONObject q = (JSONObject) teamentry.get(j);
+
                         JSONObject lid = q.getJSONObject("team");
                         String nafn = lid.getString("City");
                         nafn += " " + lid.getString("Name");
-                        listi.add(nafn);
-                        String rank = q.getString("rank");
-                        listi.add(rank);
+                        System.out.println(nafn);
+                        // upplýsingar settar í lið
+                        lidstats.setDeild(c.getString("@name"));
+                        lidstats.setId(lid.getInt("ID"));
+                        lidstats.setName(nafn);
+                        lidstats.setRank(q.getInt("rank"));
+                        // lið sett í lista
+                        listi.add(lidstats);
                     }
                 }
             }
