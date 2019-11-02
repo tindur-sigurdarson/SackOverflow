@@ -1,7 +1,8 @@
 package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
 import is.hi.hpv501.sack.SackOverflow.Services.APIService;
-import okhttp3.*;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -9,7 +10,9 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Base64;
+import java.util.List;
 
 public class APIServiceImplementation implements APIService {
 
@@ -67,22 +70,47 @@ public class APIServiceImplementation implements APIService {
     }
 
     @Override
-    public String getAllTeams() throws IOException {
-        String teamUrl = linkur+"nfl-teams/json/"+apiKey;
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url(teamUrl)
-                .build();
-        try{
-            Response response = client.newCall(request).execute();
-            return response.body().string();
-
-        }catch (IOException e){
-
+    public List<String> getAllTeams() throws IOException {
+        try {
+            String token = apiKey+":3DUbP77j";
+            byte[] src = token.getBytes();
+            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/division_team_standings.json");
+            String encoding = Base64.getUrlEncoder().encodeToString(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+            InputStream content = (InputStream)connection.getInputStream();
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(content));
+            List<String> listi = new ArrayList<>();
+            String line;
+            while ((line = in.readLine()) != null) {
+                //System.out.println(line);
+                System.out.println("virkarrrr");
+                JSONObject obj = new JSONObject(line);
+                JSONObject obj2 = obj.getJSONObject("divisionteamstandings");
+                JSONArray divi = obj2.getJSONArray("division");
+                for (int i =0; i<divi.length(); i++) {
+                    JSONObject c = (JSONObject) divi.get(i);
+                    JSONArray teamentry = c.getJSONArray("teamentry");
+                    for (int j = 0; j < teamentry.length(); j++) {
+                        JSONObject q = (JSONObject) teamentry.get(j);
+                        JSONObject lid = q.getJSONObject("team");
+                        String nafn = lid.getString("City");
+                        nafn += " " + lid.getString("Name");
+                        listi.add(nafn);
+                        String rank = q.getString("rank");
+                        listi.add(rank);
+                    }
+                }
+            }
+            return listi;
+        } catch(Exception e) {
             e.printStackTrace();
         }
-        return "villa";
+
+        return null;
     }
 
     @Override

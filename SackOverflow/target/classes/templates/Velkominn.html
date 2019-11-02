@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="prufa.css">
+    <link href="${pageContext.request.contextPath}prufa.css" rel="stylesheet" >
 </head>
 <body>
 <div th:switch="${teams}">
@@ -30,6 +30,10 @@
         </table>
     </div>
     <p><a href="/addteam">Add a new team</a></p>
+</div>
+<div>
+    <a href="/getAllTeams"> Team List </a>
+    <p> <span th:text="${allTeams}"></span> </p>
 </div>
 <div>
     <a href="/getAllPlayers"> Player List </a>
