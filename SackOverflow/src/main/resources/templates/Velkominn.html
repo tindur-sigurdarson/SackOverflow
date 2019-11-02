@@ -3,42 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="${pageContext.request.contextPath}prufa.css" rel="stylesheet" >
+    <link href="../Static/css/prufa.css" th:href="@{prufa.css}" rel="stylesheet" />
 </head>
 <body>
-<div th:switch="${teams}">
-    <h2 th:case="null">No teams yet!</h2>
-    <div th:case="*">
-        <h2>Teams</h2>
-        <table>
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Short</th>
-                <th>Record</th>
-                <th>Delete</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr th:each="team : ${teams}">
-                <td th:text="${team.name}"></td>
-                <td th:text="${team.shortName}"></td>
-                <td th:text="${team.record}"></td>
-                <td><a th:href="@{/delete/{id}(id=${team.id})}">Delete</a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-    <p><a href="/addteam">Add a new team</a></p>
-</div>
+<h2>Sack Overflow</h2>
 <div>
-    <a href="/getAllTeams"> Team List </a>
-    <p> <span th:text="${allTeams}"></span> </p>
+    <ul>
+        <li>
+            <a href="/getAllTeams"> Team List </a>
+            <p> <span th:text="${allTeams}"></span> </p>
+        </li>
+        <li>
+            <a href="/getAllPlayers"> Player List </a>
+            <p> <span th:text="${allPlayers}"></span> </p>
+        </li>
+    </ul>
 </div>
-<div>
-    <a href="/getAllPlayers"> Player List </a>
-    <p> <span th:text="${allPlayers}"></span> </p>
-</div>
+
 <div>
     <ul>
         <li>ARI</li>
