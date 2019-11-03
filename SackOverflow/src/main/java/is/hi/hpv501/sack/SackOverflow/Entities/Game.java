@@ -11,8 +11,8 @@ public class Game {
 
     private String date;
     private String time;
-    private Team awayTeam;
-    private Team homeTeam;
+    private String awayTeam;
+    private String homeTeam;
     private String location;
 
     public Game(){
@@ -43,19 +43,19 @@ public class Game {
         this.time = time;
     }
 
-    public Team getAwayTeam() {
+    public String getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(Team awayTeam) {
+    public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
     }
 
-    public Team getHomeTeam() {
+    public String getHomeTeam() {
         return homeTeam;
     }
 
-    public void setHomeTeam(Team homeTeam) {
+    public void setHomeTeam(String homeTeam) {
         this.homeTeam = homeTeam;
     }
 
