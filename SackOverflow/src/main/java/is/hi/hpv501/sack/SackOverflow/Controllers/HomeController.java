@@ -43,7 +43,6 @@ public class HomeController {
         Team jags = new Team("Jacksonville Jaguars", "JAX", "2-4");
         teamService.save(pats);
         teamService.save(jags);
-
  /*
         try {
             String api = apiService.getAllPlayers();
@@ -61,8 +60,7 @@ public class HomeController {
         System.out.println(teams);
         model.addAttribute("allTeams",teams);
     */
-
-        return "Velkominn";
+        return "index";
     }
 
     @RequestMapping(value ="/addteam", method = RequestMethod.POST)
@@ -72,8 +70,9 @@ public class HomeController {
         }
         teamService.save(team);
         model.addAttribute("teams", teamService.findAll());
-        return "Velkominn";
+        return "index";
     }
+    
 
     @RequestMapping(value="/addteam", method = RequestMethod.GET)
     public String addTeamForm(Team team){
@@ -85,7 +84,7 @@ public class HomeController {
         Team team = teamService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid team ID"));
         teamService.delete(team);
         model.addAttribute("teams", teamService.findAll());
-        return "Velkominn";
+        return "index";
     }
 
 
@@ -98,7 +97,7 @@ public class HomeController {
 
         model.addAttribute("allTeams",teams);
 
-        return "Velkominn";
+        return "index";
     }
 
     @RequestMapping(value="/getAllPlayers", method = RequestMethod.GET)
@@ -107,7 +106,7 @@ public class HomeController {
 
             model.addAttribute("allPlayers", playerAPI);
 
-        return "Velkominn";
+        return "index";
     }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
@@ -124,7 +123,7 @@ public class HomeController {
             userService.save(user);
         }
         model.addAttribute("movies", userService.findAll());
-        return "Velkominn";
+        return "index";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
