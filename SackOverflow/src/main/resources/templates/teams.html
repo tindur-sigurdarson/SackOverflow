@@ -1,0 +1,243 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/teams.css" th:href="@{/css/teams.css}" rel="stylesheet" />
+  <title>Teams</title>
+</head>
+
+<body>
+  <header>
+    <h1>Sack Overflow</h1>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="players.html">Players</a></li>
+        <li><a href="teams.html">Teams</a></li>
+        <li><a href="games.html">Games</a></li>
+        <li><a href="login.html">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Teams</h2>
+    <table class="afc_east">
+      <caption>AFC East</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>New England Patriots</th>
+          <th>8-0</th>
+        </tr>
+        <tr>
+          <th>Buffalo Bills</th>
+          <th>5-2</th>
+        </tr>
+        <tr>
+          <th>New Jersey Jets</th>
+          <th>1-6</th>
+        </tr>
+        <tr>
+          <th>Miami Dolphins</th>
+          <th>0-7</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="afc_west">
+      <caption>AFC West</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Kansas City Chiefs</th>
+          <th>5-3</th>
+        </tr>
+        <tr>
+          <th>Oakland Raiders</th>
+          <th>3-4</th>
+        </tr>
+        <tr>
+          <th>Los Angeles Chargers</th>
+          <th>3-5</th>
+        </tr>
+        <tr>
+          <th>Denver Broncos</th>
+          <th>2-6</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="afc_north">
+      <caption>AFC North</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Baltimore Ravens</th>
+          <th>5-2</th>
+        </tr>
+        <tr>
+          <th>Pittsburgh Steelers</th>
+          <th>3-4</th>
+        </tr>
+        <tr>
+          <th>Cleveland Browns</th>
+          <th>2-5</th>
+        </tr>
+        <tr>
+          <th>Cincinnati Bengals</th>
+          <th>0-8</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="afc_south">
+      <caption>AFC South</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Indianapolis Colts</th>
+          <th>5-2</th>
+        </tr>
+        <tr>
+          <th>Houston Texans</th>
+          <th>5-3</th>
+        </tr>
+        <tr>
+          <th>Jacksonville Jaguars</th>
+          <th>4-4</th>
+        </tr>
+        <tr>
+          <th>Tennessee Titans</th>
+          <th>4-4</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="nfc_east">
+      <caption>NFC East</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="nfc_west">
+      <caption>NFC West</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="nfc_north">
+      <caption>NFC North</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+    <table class="nfc_south">
+      <caption>NFC South</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Record</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+        <tr>
+          <th>Green Bay Packers</th>
+          <th>7-1</th>
+        </tr>
+      </thead>
+      <tbody id="teamData"></tbody>
+    </table>
+
+</body>
+
+</html>

@@ -4,9 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
-  <link href="../Static/css/login.css" th:href="@{/css/login.css}" rel="stylesheet" />
-  <title>Login</title>
-
+  <link href="../Static/css/games.css" th:href="@{/css/games.css}" rel="stylesheet" />
+  <title>Games</title>
 </head>
 
 <body>
@@ -22,17 +21,7 @@
       </ul>
     </nav>
   </header>
-  <h2>Login to your account</h2>
-  <form action="players" th:action="@{/login}" th:object="${user}" method="post">
-    <input type="text" name="username" id="username" th:field="*{uName}" />
-    <input type="text" name="password" id="password" th:value="*{password}" />
-    <input type="submit" value="Login" />
-  </form>
-
-  <h2>Sign up for an account</h2>
-  <ul class="signup__link">
-    <li><a href="signup.html">Sign up</a></li>
-  </ul>
+  <h2>Games</h2>
 </body>
 
 </html>
