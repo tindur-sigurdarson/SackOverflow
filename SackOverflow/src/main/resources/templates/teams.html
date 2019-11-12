@@ -13,24 +13,16 @@
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
-        <li>
-          <a href="/SackOverflow">Home</a>
-        </li>
-        <li>
-          <a href="/players">Players</a>
-          <p>
-            <span th:text="${allplayers}"></span>
-          </p>
-        </li>
-        <li><a href="/Teams">Teams</a>
-          <p> <span th:text="${allTeams}"></span> </p>
-        </li>
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
         <li><a href="/Games">Games</a></li>
         <li><a href="/Login">Login</a></li>
       </ul>
     </nav>
   </header>
   <h2>Teams</h2>
+  <p> <span th:text="${allTeams}"></span> </p>
     <table class="afc_east">
       <caption>AFC East</caption>
       <thead>

@@ -392,13 +392,10 @@ public class APIServiceImplementation implements APIService {
                 }
 
             }
-
             return listi;
         } catch(Exception e) {
             e.printStackTrace();
         }
-
-
         return null;
     }
 
