@@ -108,6 +108,14 @@ public class HomeController {
 
         return "index";
     }
+    @RequestMapping(value="/getAllGames", method = RequestMethod.GET)
+    public String getAllGames(Model model) throws IOException {
+        List gamesAPI = apiService.getAllGames();
+
+        model.addAttribute("allPlayers", gamesAPI);
+
+        return "index";
+    }
 
     @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
