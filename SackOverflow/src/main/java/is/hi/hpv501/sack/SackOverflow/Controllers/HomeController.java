@@ -1,18 +1,12 @@
 package is.hi.hpv501.sack.SackOverflow.Controllers;
 
-        import com.fasterxml.jackson.annotation.JsonAlias;
-        import is.hi.hpv501.sack.SackOverflow.Entities.Player;
         import is.hi.hpv501.sack.SackOverflow.Entities.Team;
         import is.hi.hpv501.sack.SackOverflow.Entities.User;
-        import is.hi.hpv501.sack.SackOverflow.Services.APIService;
         import is.hi.hpv501.sack.SackOverflow.Services.Implementations.APIServiceImplementation;
         import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
         import is.hi.hpv501.sack.SackOverflow.Services.UserService;
-        import org.json.JSONArray;
         import org.json.JSONException;
-        import org.json.JSONObject;
         import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.expression.spel.ast.NullLiteral;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.validation.BindingResult;
@@ -23,8 +17,6 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
         import javax.servlet.http.HttpSession;
         import javax.validation.Valid;
         import java.io.IOException;
-        import java.util.ArrayList;
-        import java.util.HashMap;
         import java.util.List;
 
 @Controller
@@ -108,32 +100,19 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value="/getAllPlayers", method = RequestMethod.GET)
-    public String getAllPlayers(Model model) throws IOException {
-        List playerAPI = apiService.getAllPlayers();
-
-            model.addAttribute("allPlayers", playerAPI);
-
-        return "index";
-    }
-    @RequestMapping(value="/getAllGames", method = RequestMethod.GET)
+    @RequestMapping(value="/Games", method = RequestMethod.GET)
     public String getAllGames(Model model) throws IOException {
         List gamesAPI = apiService.getAllGames();
 
-        model.addAttribute("allPlayers", gamesAPI);
+        model.addAttribute("allGames", gamesAPI);
 
-        return "index";
+        return "Games";
     }
     
     @RequestMapping(value="/SackOverflow", method = RequestMethod.GET)
     public String getHome(Model model) throws IOException {
 
         return "index";
-    }
-    @RequestMapping(value="/Games", method = RequestMethod.GET)
-    public String getGames(Model model) throws IOException {
-
-        return "games";
     }
 
     @RequestMapping(value = "/Signup", method = RequestMethod.GET)

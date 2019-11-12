@@ -3,9 +3,9 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" href="../Static/css/menu.css" th:href="@{/css/menu.css}">
-  <link rel="stylesheet" href="../Static/css/index.css" th:href="@{/css/index.css}">
-  <title>Sack Overflow</title>
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/games.css" th:href="@{/css/games.css}" rel="stylesheet" />
+  <title>Games</title>
 </head>
 
 <body>
@@ -21,7 +21,9 @@
       </ul>
     </nav>
   </header>
-  <h2>Sack Overflow</h2>
+  <h2>Games</h2>
+  <p> <span th:text="${allGames}"></span> </p>
 </body>
 
 </html>
+
