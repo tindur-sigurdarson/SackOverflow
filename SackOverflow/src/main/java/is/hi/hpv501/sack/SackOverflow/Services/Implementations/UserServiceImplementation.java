@@ -13,40 +13,41 @@ public class UserServiceImplementation implements UserService {
 
     UserRepository repository;
 
+
     @Autowired
-    public UserServiceImplementation(UserRepository userRepository) {
-        this.repository = userRepository;
+    public UserServiceImplementation(UserRepository repository) {
+        this.repository = repository;
     }
 
-    @Override
-    public User save(User user) {
-        return null;
-    }
-
-    @Override
-    public void delete(User user) {
-
-    }
-
-    @Override
-    public List<User> findAll() {
-        return null;
-    }
-
-    @Override
-    public User findByUName(String uName) {
-        return null;
-    }
-
-    @Override
-    public User login(User user) {
-        User exists = findByUName(user.getuName());
-        if(exists != null){
-            if(exists.getPassword().equals(user.getPassword())){
-                return user;
-            }
+        @Override
+        public User save(User user) {
+            return repository.save(user);
         }
-        return null;
 
+        @Override
+        public void delete (User user) {
+             repository.delete(user);
+        }
+
+        @Override
+        public List<User> findAll() {
+            return repository.findAll();
+        }
+
+        @Override
+        public User findByUName (String uName){
+            return repository.findByUName(uName);
+        }
+
+        @Override
+        public User login (User user){
+            User exists = findByUName(user.getuName());
+            if (exists != null) {
+                if (exists.getPassword().equals(user.getPassword())) {
+                    return user;
+                }
+            }
+            return null;
+
+        }
     }
-}
