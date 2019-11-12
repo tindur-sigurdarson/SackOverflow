@@ -13,16 +13,28 @@
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="players.html">Players</a></li>
-        <li><a href="teams.html">Teams</a></li>
-        <li><a href="games.html">Games</a></li>
-        <li><a href="login.html">Login</a></li>
+        <li>
+          <a href="/SackOverflow">Home</a>
+        </li>
+        <li>
+          <a href="/players">Players</a>
+          <p>
+            <span th:text="${allplayers}"></span>
+          </p>
+        </li>
+        <li><a href="/Teams">Teams</a>
+          <p> <span th:text="${allTeams}"></span> </p>
+        </li>
+        <li><a href="/Games">Games</a></li>
+        <li><a href="/Login">Login</a></li>
       </ul>
     </nav>
   </header>
   <h2>Players</h2>
-
+      <a href="/getAllPlayers">Players</a>
+      <p>
+        <span th:text="${allplayers}"></span>
+      </p>
 </body>
 
 </html>
