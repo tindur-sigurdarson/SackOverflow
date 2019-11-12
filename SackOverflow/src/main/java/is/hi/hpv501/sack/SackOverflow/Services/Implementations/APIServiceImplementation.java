@@ -1,6 +1,8 @@
 package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
+import is.hi.hpv501.sack.SackOverflow.Entities.Game;
 import is.hi.hpv501.sack.SackOverflow.Entities.Player;
+import is.hi.hpv501.sack.SackOverflow.Entities.Team;
 import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
 import is.hi.hpv501.sack.SackOverflow.Services.APIService;
 import org.json.JSONArray;
@@ -348,6 +350,54 @@ public class APIServiceImplementation implements APIService {
         } catch(Exception e) {
             e.printStackTrace();
         }
+
+        return null;
+    }
+    @Override
+    public List<Game> getAllGames() throws IOException {
+        try {
+            String token = apiKey+":3DUbP77j";
+            byte[] src = token.getBytes();
+            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json");
+            String encoding = Base64.getUrlEncoder().encodeToString(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+            InputStream content = (InputStream)connection.getInputStream();
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(content));
+            //Listi búinn til fyrir lið
+            List<Game> listi = new ArrayList<Game>();
+
+            String line;
+            while ((line = in.readLine()) != null) {
+                JSONObject obj = new JSONObject(line);
+                JSONObject obj2 = obj.getJSONObject("fullgameschedule");
+                JSONArray jsonArray = obj2.getJSONArray("gameentry");
+                for(int i =0; i<jsonArray.length();i++) {
+                    Game leikir = new Game();
+                    JSONObject c = (JSONObject) jsonArray.get(i);
+                    leikir.setId(c.getInt("id"));
+                    leikir.setDate(c.getString("date"));
+                    leikir.setTime(c.getString("time"));
+                    leikir.setWeek(c.getInt("week"));
+
+                    JSONObject home = c.getJSONObject("homeTeam");
+                    leikir.setHomeTeam(home.getString("City") + " " + home.getString("Name"));
+
+                    JSONObject away = c.getJSONObject("awayTeam");
+                    leikir.setAwayTeam(away.getString("City") + " " + away.getString("Name"));
+                    listi.add(leikir);
+                }
+
+            }
+
+            return listi;
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
+
 
         return null;
     }

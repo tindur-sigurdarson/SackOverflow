@@ -14,6 +14,7 @@ public class Game {
     private String awayTeam;
     private String homeTeam;
     private String location;
+    private int week;
 
     public Game(){
 
@@ -65,5 +66,26 @@ public class Game {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public int getWeek() {
+        return week;
+    }
+
+    public void setWeek(int week) {
+        this.week = week;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", date='" + date + '\'' +
+                ", time='" + time + '\'' +
+                ", awayTeam='" + awayTeam + '\'' +
+                ", homeTeam='" + homeTeam + '\'' +
+                ", location='" + location + '\'' +
+                ", week='" + week + '\'' +
+                '}';
     }
 }
