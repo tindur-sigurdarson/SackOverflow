@@ -88,17 +88,25 @@ public class HomeController {
     }
 
 
-    @RequestMapping(value="/getAllTeams", method = RequestMethod.GET)
+    @RequestMapping(value="/Teams", method = RequestMethod.GET)
     public String getAllTeams(Model model) throws IOException {
 
         List teams = apiService.getAllTeams();
 
-
-
         model.addAttribute("allTeams",teams);
 
-        return "index";
+        return "teams";
     }
+        
+    @RequestMapping(value="/players", method = RequestMethod.GET)
+    public String players(Model model) throws IOException {
+        List playerAPI = apiService.getAllPlayers();
+
+        model.addAttribute("allPlayers",playerAPI);
+
+        return "players";
+    }
+
 
     @RequestMapping(value="/getAllPlayers", method = RequestMethod.GET)
     public String getAllPlayers(Model model) throws IOException {
@@ -116,8 +124,19 @@ public class HomeController {
 
         return "index";
     }
+    
+    @RequestMapping(value="/SackOverflow", method = RequestMethod.GET)
+    public String getHome(Model model) throws IOException {
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
+        return "index";
+    }
+    @RequestMapping(value="/Games", method = RequestMethod.GET)
+    public String getGames(Model model) throws IOException {
+
+        return "games";
+    }
+
+    @RequestMapping(value = "/Signup", method = RequestMethod.GET)
     public String signUpGET(User user){
         return "signup";
     }
