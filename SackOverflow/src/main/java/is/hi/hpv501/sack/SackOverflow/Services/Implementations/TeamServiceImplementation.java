@@ -11,7 +11,6 @@ import java.util.Optional;
 
 @Service
 public class TeamServiceImplementation implements TeamService {
-
     TeamRepository repository;
 
     @Autowired
@@ -41,6 +40,7 @@ public class TeamServiceImplementation implements TeamService {
 
     @Override
     public List<Team> findByName(String name) {
+
         return null;
     }
 }
