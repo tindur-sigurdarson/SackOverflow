@@ -1,8 +1,10 @@
 package is.hi.hpv501.sack.SackOverflow.Controllers;
 
+        import is.hi.hpv501.sack.SackOverflow.Entities.Player;
         import is.hi.hpv501.sack.SackOverflow.Entities.Team;
         import is.hi.hpv501.sack.SackOverflow.Entities.User;
         import is.hi.hpv501.sack.SackOverflow.Services.Implementations.APIServiceImplementation;
+        import is.hi.hpv501.sack.SackOverflow.Services.PlayerService;
         import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
         import is.hi.hpv501.sack.SackOverflow.Services.UserService;
         import org.json.JSONException;
@@ -25,6 +27,7 @@ public class HomeController {
     private TeamService teamService;
     private APIServiceImplementation apiService = new APIServiceImplementation();
     private UserService userService;
+    private PlayerService playerService;
     @Autowired
     public HomeController(TeamService teamService){this.teamService = teamService;}
 
@@ -167,5 +170,16 @@ public class HomeController {
         }
         return "redirect:/";
     }
-
+    @RequestMapping(value = "/searchPlayer", method = RequestMethod.GET)
+    public String searchPlayerGET(Player player){
+        return "players";
+    }
+    @RequestMapping(value = "/searchPlayer", method = RequestMethod.POST)
+    public String searchPlayerPOST(@Valid Player player, BindingResult result, Model model){
+        if (result.hasErrors()){
+            return "index";
+        }
+        model.addAttribute("players", playerService.findByName(player.getFirstName()));
+        return "players";
+    }
 }
