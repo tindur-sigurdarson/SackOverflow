@@ -118,7 +118,7 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/Signup", method = RequestMethod.GET)
+    @RequestMapping(value = "/signup", method = RequestMethod.GET)
     public String signUpGET(User user){
         return "signup";
     }
@@ -131,7 +131,7 @@ public class HomeController {
         if(exists == null){
             userService.save(user);
         }
-        model.addAttribute("movies", userService.findAll());
+        model.addAttribute("users", userService.findAll());
         return "index";
     }
 
