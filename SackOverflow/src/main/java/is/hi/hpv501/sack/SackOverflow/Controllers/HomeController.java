@@ -2,19 +2,22 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
 
         import is.hi.hpv501.sack.SackOverflow.Entities.Player;
         import is.hi.hpv501.sack.SackOverflow.Entities.Team;
+        import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
         import is.hi.hpv501.sack.SackOverflow.Entities.User;
         import is.hi.hpv501.sack.SackOverflow.Services.Implementations.APIServiceImplementation;
         import is.hi.hpv501.sack.SackOverflow.Services.PlayerService;
         import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
         import is.hi.hpv501.sack.SackOverflow.Services.UserService;
         import org.json.JSONException;
-        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.beans.factory.annotation.*;
+
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.validation.BindingResult;
         import org.springframework.web.bind.annotation.PathVariable;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
+        import org.springframework.web.bind.annotation.RequestParam;
 
         import javax.servlet.http.HttpSession;
         import javax.validation.Valid;
@@ -28,8 +31,12 @@ public class HomeController {
     private APIServiceImplementation apiService = new APIServiceImplementation();
     private UserService userService;
     private PlayerService playerService;
+
     @Autowired
-    public HomeController(TeamService teamService){this.teamService = teamService;}
+    public HomeController(TeamService teamService, PlayerService playerService){
+        this.teamService = teamService;
+        this.playerService=playerService;
+    }
 
     @RequestMapping("/")
     public String Home(Model model) throws IOException, JSONException {
@@ -38,6 +45,12 @@ public class HomeController {
         Team jags = new Team("Jacksonville Jaguars", "JAX", "2-4");
         teamService.save(pats);
         teamService.save(jags);
+        Player pl = new Player(10101, "Tom", "Brady", 44, "qb",
+                "aa", 1111, 22, 34,1.3, 33, 54, 45, 345, 345, 4.45,
+        345, 345, 345, 23, 34, 45,
+        4.5, 4, 5, 4, 4, 5,
+        54, 45, 34, 45, 45, 35, 45.5);
+        playerService.save(pl);
  /*
         try {
             String api = apiService.getAllPlayers();
@@ -170,16 +183,12 @@ public class HomeController {
         }
         return "redirect:/";
     }
-    @RequestMapping(value = "/searchPlayer", method = RequestMethod.GET)
-    public String searchPlayerGET(Player player){
+    @RequestMapping(value= "/playerSearch", method = RequestMethod.POST)
+    public String searchPlayer(@RequestParam(value = "search", required = false) String search, Model model){
+        System.out.println(search);
+        List<Player> player = playerService.findByName(search);
+        model.addAttribute("allPlayers", player);
         return "players";
     }
-    @RequestMapping(value = "/searchPlayer", method = RequestMethod.POST)
-    public String searchPlayerPOST(@Valid Player player, BindingResult result, Model model){
-        if (result.hasErrors()){
-            return "index";
-        }
-        model.addAttribute("players", playerService.findByName(player.getFirstName()));
-        return "players";
-    }
+
 }

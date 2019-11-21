@@ -1,10 +1,9 @@
 
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
 
 
 @Entity
@@ -53,9 +52,9 @@ public class Player {
     private double xpPct;
 
 
-
     public Player(){
     }
+
 
     public Player(int playerID, String firstName, String lastName, int jersey, String position,
                   String team, int gamesPlayed, int passAttempts, int passCompletion, double passPct,
@@ -100,6 +99,8 @@ public class Player {
         this.xpAtt = xpAtt;
         this.xpPct = xpPct;
     }
+
+
 
 
     public int getPlayerID() {
@@ -384,6 +385,7 @@ public class Player {
 
     @Override
     public String toString() {
+      /*
         if(position.equals("QB")){
           return  "Player{" +
                     "playerID=" + playerID +
@@ -528,5 +530,8 @@ public class Player {
                 ", xpAtt=" + xpAtt +
                 ", xpPct=" + xpPct +
                 '}';
+
+       */
+      return this.lastName;
     }
 }

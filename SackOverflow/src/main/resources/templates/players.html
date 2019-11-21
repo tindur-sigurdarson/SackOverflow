@@ -21,10 +21,10 @@
       </ul>
     </nav>
   </header>
-  <h2>Players</h2>
-  <form action="#" th:action="@{/players}" th:object="${players}" method="post">
-    <input type="text" name="searchPlayer"/>
-    <input type="submit" value="Search" />
+  <h2>Search for Players</h2>
+  <form action="#" th:action="@{/playerSearch}" th:object="${players}"  method="post">
+    <input type="text" name="search" id="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
   </form>
   <h1>Player list</h1>
   <p> <span th:text="${allPlayers}"></span> </p>

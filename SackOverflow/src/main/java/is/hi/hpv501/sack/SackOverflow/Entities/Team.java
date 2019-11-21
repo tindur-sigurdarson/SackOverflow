@@ -1,5 +1,6 @@
 package is.hi.hpv501.sack.SackOverflow.Entities;
 
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -22,8 +23,10 @@ public class Team {
 
 
 
+
     public Team(){
     }
+
 
     public Team(String name, String shortName, String record) {
         this.name = name;
