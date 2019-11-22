@@ -58,11 +58,6 @@ public class Teams {
 
         @Override
         public String toString() {
-            return "Teams{" +
-                    "id=" + id +
-                    ", name='" + name + '\'' +
-                    ", rank=" + rank +
-                    ", deild=" + deild +
-                    '}';
+            return id +'\''+name+'\'' + rank+ '\''+ deild;
         }
     }
