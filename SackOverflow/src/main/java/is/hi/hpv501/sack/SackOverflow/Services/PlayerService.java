@@ -10,7 +10,9 @@ public interface PlayerService {
     Player save(Player player);
     void delete(Player player);
     List<Player> findAll();
-    List<Player> findByName(String name);
+    List<Player> findByFirstName(String name);
+    List<Player> findByLastName(String name);
     Optional<Player> findById(long id);
+
 
 }

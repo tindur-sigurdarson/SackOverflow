@@ -1,16 +1,16 @@
 package is.hi.hpv501.sack.SackOverflow.Services;
 
-import is.hi.hpv501.sack.SackOverflow.Entities.Team;
+import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface TeamService {
-    Team save(Team team);
-    void delete(Team team);
-    List<Team> findAll();
-    Optional<Team> findById(long id);
-    List<Team> findByName(String name);
+    Teams save(Teams teams);
+    void delete(Teams teams);
+    List<Teams> findAll();
+    Optional<Teams> findById(long id);
+    List<Teams> findByName(String name);
 
 
 }

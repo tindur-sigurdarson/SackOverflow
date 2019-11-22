@@ -385,7 +385,7 @@ public class Player {
 
     @Override
     public String toString() {
-      /*
+
         if(position.equals("QB")){
           return  "Player{" +
                     "playerID=" + playerID +
@@ -455,6 +455,7 @@ public class Player {
                     ", jersey=" + jersey +
                     ", position='" + position + '\'' +
                     ", team='" + team + '\'' +
+                    ", gamesPlayed="+ gamesPlayed+
                     ", tackleTotal=" + tackleTotal +
                     ", sacks=" + sacks +
                     ", safeties=" + safeties +
@@ -531,7 +532,5 @@ public class Player {
                 ", xpPct=" + xpPct +
                 '}';
 
-       */
-      return this.lastName;
     }
 }

@@ -2,6 +2,7 @@ package is.hi.hpv501.sack.SackOverflow.Repositories;
 
 import is.hi.hpv501.sack.SackOverflow.Entities.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -13,5 +14,6 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
     void delete (Player player);
     List<Player> findAll();
     List<Player> findByFirstName(String name);
+    List<Player> findByLastName(String name);
     Optional<Player> findById(long id);
 }

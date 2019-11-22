@@ -1,6 +1,6 @@
 package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
-import is.hi.hpv501.sack.SackOverflow.Entities.Team;
+import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
 import is.hi.hpv501.sack.SackOverflow.Repositories.TeamRepository;
 import is.hi.hpv501.sack.SackOverflow.Services.TeamService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,28 +19,28 @@ public class TeamServiceImplementation implements TeamService {
     }
 
     @Override
-    public Team save(Team team) {
+    public Teams save(Teams team) {
         return repository.save(team);
     }
 
     @Override
-    public void delete(Team team) {
+    public void delete(Teams team) {
         repository.delete(team);
     }
 
     @Override
-    public List<Team> findAll() {
+    public List<Teams> findAll() {
         return repository.findAll();
     }
 
     @Override
-    public Optional<Team> findById(long id) {
+    public Optional<Teams> findById(long id) {
         return repository.findById(id);
     }
 
     @Override
-    public List<Team> findByName(String name) {
+    public List<Teams> findByName(String name) {
 
-        return null;
+        return repository.findByname(name);
     }
 }

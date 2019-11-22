@@ -2,12 +2,20 @@ package is.hi.hpv501.sack.SackOverflow.Entities;
 
 import org.json.JSONObject;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity
 public class Teams {
+        private String name;
         private String deild;
         private int id;
-        private String name;
         private int rank;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long idd;
         public Teams(){}
         public Teams(String deild,int id, String name, int rank) {
             this.deild=deild;

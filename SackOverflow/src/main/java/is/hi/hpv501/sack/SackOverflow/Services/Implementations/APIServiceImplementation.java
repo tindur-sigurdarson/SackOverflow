@@ -2,7 +2,6 @@ package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
 import is.hi.hpv501.sack.SackOverflow.Entities.Game;
 import is.hi.hpv501.sack.SackOverflow.Entities.Player;
-import is.hi.hpv501.sack.SackOverflow.Entities.Team;
 import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
 import is.hi.hpv501.sack.SackOverflow.Services.APIService;
 import org.json.JSONArray;
@@ -26,27 +25,6 @@ public class APIServiceImplementation implements APIService {
 
     public APIServiceImplementation() {
     }
-/*
-    @Override
-    public String getAllPlayers() throws IOException {
-        linkur="https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/cumulative_player_stats.json";
-        String teamUrl = linkur+"players/json/"+apiKey;
-        OkHttpClient client = new OkHttpClient();
-
-        Request request = new Request.Builder()
-                .url(teamUrl)
-                .build();
-        try{
-            Response response = client.newCall(request).execute();
-            return response.body().string();
-
-        }catch (IOException e){
-
-            e.printStackTrace();
-        }
-        return "villa";
-    }
-*/
 
     @Override
     public List<Player> getAllPlayers() throws IOException {
@@ -280,7 +258,6 @@ public class APIServiceImplementation implements APIService {
                     play.setFirstName(firstName);
                     play.setPosition(position);
                     play.setGamesPlayed(gamesplayed);
-
                     //bæta leikmönnum í arraylist
                     leikmannalisti.add(play);
                 }

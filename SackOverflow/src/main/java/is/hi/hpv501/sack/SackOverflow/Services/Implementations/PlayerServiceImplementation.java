@@ -41,9 +41,13 @@ public class PlayerServiceImplementation implements PlayerService {
 
 
     @Override
-    public List<Player> findByName(String name) {
+    public List<Player> findByFirstName(String name) {
         return repository.findByFirstName(name);
+    }
 
+    @Override
+    public List<Player> findByLastName(String name) {
+        return repository.findByLastName(name);
     }
 }
 

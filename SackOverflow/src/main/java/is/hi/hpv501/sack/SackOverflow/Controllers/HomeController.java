@@ -1,7 +1,6 @@
 package is.hi.hpv501.sack.SackOverflow.Controllers;
 
         import is.hi.hpv501.sack.SackOverflow.Entities.Player;
-        import is.hi.hpv501.sack.SackOverflow.Entities.Team;
         import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
         import is.hi.hpv501.sack.SackOverflow.Entities.User;
         import is.hi.hpv501.sack.SackOverflow.Services.Implementations.APIServiceImplementation;
@@ -14,7 +13,6 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
         import org.springframework.stereotype.Controller;
         import org.springframework.ui.Model;
         import org.springframework.validation.BindingResult;
-        import org.springframework.web.bind.annotation.PathVariable;
         import org.springframework.web.bind.annotation.RequestMapping;
         import org.springframework.web.bind.annotation.RequestMethod;
         import org.springframework.web.bind.annotation.RequestParam;
@@ -41,67 +39,28 @@ public class HomeController {
     @RequestMapping("/")
     public String Home(Model model) throws IOException, JSONException {
 
-        Team pats = new Team("New England Patriots","NE","6-0");
-        Team jags = new Team("Jacksonville Jaguars", "JAX", "2-4");
-        teamService.save(pats);
-        teamService.save(jags);
-        Player pl = new Player(10101, "Tom", "Brady", 44, "qb",
-                "aa", 1111, 22, 34,1.3, 33, 54, 45, 345, 345, 4.45,
-        345, 345, 345, 23, 34, 45,
-        4.5, 4, 5, 4, 4, 5,
-        54, 45, 34, 45, 45, 35, 45.5);
-        playerService.save(pl);
- /*
-        try {
-            String api = apiService.getAllPlayers();
-            System.out.println(api);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        model.addAttribute("teams", teamService.findAll());
-        String teams = null;
-        try {
-            teams = apiService.getAllTeams();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println(teams);
-        model.addAttribute("allTeams",teams);
-    */
         return "index";
     }
 
-    @RequestMapping(value ="/addteam", method = RequestMethod.POST)
-    public String addTeam(@Valid Team team, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "add-team";
-        }
-        teamService.save(team);
-        model.addAttribute("teams", teamService.findAll());
-        return "index";
-    }
     
 
     @RequestMapping(value="/addteam", method = RequestMethod.GET)
-    public String addTeamForm(Team team){
+    public String addTeamForm(Teams team){
         return "add-team";
     }
 
-    @RequestMapping(value="/delete/{id}", method = RequestMethod.GET)
-    public String deleteTeam(@PathVariable("id") long id, Model model){
-        Team team = teamService.findById(id).orElseThrow(()-> new IllegalArgumentException("Invalid team ID"));
-        teamService.delete(team);
-        model.addAttribute("teams", teamService.findAll());
-        return "index";
-    }
 
 
     @RequestMapping(value="/Teams", method = RequestMethod.GET)
-    public String getAllTeams(Model model) throws IOException {
+    public String getAllTeams(Model model, String lid) throws IOException {
 
         List teams = apiService.getAllTeams();
-
+        for(int i=0; i<teams.size();i++){
+            Teams p = (Teams) teams.get(i);
+            teamService.save(p);
+        }
         model.addAttribute("allTeams",teams);
+        model.addAttribute("lidnafn",teamService.findAll());
 
         return "teams";
     }
@@ -109,7 +68,10 @@ public class HomeController {
     @RequestMapping(value="/players", method = RequestMethod.GET)
     public String players(Model model) throws IOException {
         List playerAPI = apiService.getAllPlayers();
-
+        for(int i=0; i<playerAPI.size();i++){
+            Player p = (Player) playerAPI.get(i);
+            playerService.save(p);
+        }
         model.addAttribute("allPlayers",playerAPI);
 
         return "players";
@@ -185,8 +147,9 @@ public class HomeController {
     }
     @RequestMapping(value= "/playerSearch", method = RequestMethod.POST)
     public String searchPlayer(@RequestParam(value = "search", required = false) String search, Model model){
-        System.out.println(search);
-        List<Player> player = playerService.findByName(search);
+
+        List<Player> player = playerService.findByFirstName(search);
+        //List<Player> playlast = playerService.findByLastName(search);
         model.addAttribute("allPlayers", player);
         return "players";
     }
