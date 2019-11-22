@@ -9,8 +9,8 @@ public interface TeamService {
     Teams save(Teams teams);
     void delete(Teams teams);
     List<Teams> findAll();
+    List <Teams> findByName(String name);
     Optional<Teams> findById(long id);
-    List<Teams> findByName(String name);
-
+    List<Teams> findTeamsByDeildAndRank(String deild,int rank);
 
 }

@@ -17,6 +17,7 @@ package is.hi.hpv501.sack.SackOverflow.Controllers;
         import org.springframework.web.bind.annotation.RequestMethod;
         import org.springframework.web.bind.annotation.RequestParam;
 
+        import javax.management.Query;
         import javax.servlet.http.HttpSession;
         import javax.validation.Valid;
         import java.io.IOException;
@@ -31,9 +32,10 @@ public class HomeController {
     private PlayerService playerService;
 
     @Autowired
-    public HomeController(TeamService teamService, PlayerService playerService){
+    public HomeController(TeamService teamService, PlayerService playerService,UserService userService){
         this.teamService = teamService;
         this.playerService=playerService;
+        this.userService = userService;
     }
 
     @RequestMapping("/")
@@ -52,15 +54,113 @@ public class HomeController {
 
 
     @RequestMapping(value="/Teams", method = RequestMethod.GET)
-    public String getAllTeams(Model model, String lid) throws IOException {
+    public String getAllTeams(Model model) throws IOException {
 
         List teams = apiService.getAllTeams();
         for(int i=0; i<teams.size();i++){
             Teams p = (Teams) teams.get(i);
             teamService.save(p);
         }
-        model.addAttribute("allTeams",teams);
-        model.addAttribute("lidnafn",teamService.findAll());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("afcEast1",afcEast0.getName());
+
+        Teams afcEast1 = (Teams) teams.get(1);
+        model.addAttribute("afcEast2",afcEast1.getName());
+
+        Teams afcEast2 = (Teams) teams.get(2);
+        model.addAttribute("afcEast3",afcEast2.getName());
+
+        Teams afcEast3 = (Teams) teams.get(3);
+        model.addAttribute("afcEast4",afcEast3.getName());
+
+        Teams afcEast4 = (Teams) teams.get(4);
+        model.addAttribute("Afc",afcEast4.getName());
+/*
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+        Teams afcEast0 = (Teams) teams.get(0);
+        model.addAttribute("lidnafn",afcEast0.getName());
+
+
+ */
+
 
         return "teams";
     }
@@ -102,10 +202,10 @@ public class HomeController {
         if(result.hasErrors()){
             return "signup";
         }
-        User exists = userService.findByUName(user.getuName());
-        if(exists == null){
+        //User exists = userService.findByUName(user.getuName());
+        //if(exists == null){
             userService.save(user);
-        }
+        //}
         model.addAttribute("users", userService.findAll());
         return "index";
     }
