@@ -1,5 +1,6 @@
 package is.hi.hpv501.sack.SackOverflow.Services.Implementations;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import is.hi.hpv501.sack.SackOverflow.Entities.Game;
 import is.hi.hpv501.sack.SackOverflow.Entities.Player;
 import is.hi.hpv501.sack.SackOverflow.Entities.Teams;
@@ -42,7 +43,7 @@ public class APIServiceImplementation implements APIService {
                     new BufferedReader(new InputStreamReader(content));
             String line;
             while ((line = in.readLine()) != null) {
-                //System.out.println(line);
+
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("cumulativeplayerstats");
                 JSONArray jsonArr = obj2.getJSONArray("playerstatsentry");
@@ -290,8 +291,7 @@ public class APIServiceImplementation implements APIService {
 
             String line;
             while ((line = in.readLine()) != null) {
-                //System.out.println(line);
-                System.out.println("virkarrrr");
+                System.out.println(line);
                 //  JSON obj búinn til
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("divisionteamstandings");
@@ -312,12 +312,21 @@ public class APIServiceImplementation implements APIService {
                         JSONObject lid = q.getJSONObject("team");
                         String nafn = lid.getString("City");
                         nafn += " " + lid.getString("Name");
-                        System.out.println(nafn);
                         // upplýsingar settar í lið
                         lidstats.setDeild(c.getString("@name"));
                         lidstats.setId(lid.getInt("ID"));
                         lidstats.setName(nafn);
                         lidstats.setRank(q.getInt("rank"));
+                        // Team record
+                        JSONObject rec = q.getJSONObject("stats");
+                        JSONObject W = rec.getJSONObject("Wins");
+                        JSONObject L = rec.getJSONObject("Losses");
+                        JSONObject T = rec.getJSONObject("Ties");
+                        String win = W.getString("#text");
+                        String loss = L.getString("#text");
+                        String ties = T.getString("#text");
+                        String record = win+"-"+loss+"-"+ties;
+                        lidstats.setRecord(record);
                         // lið sett í lista
                         listi.add(lidstats);
                     }

@@ -27,7 +27,20 @@
     <input type="submit" value="Search"/>
   </form>
   <h1>Player list</h1>
-  <p> <span th:text="${allPlayers}"></span> </p>
+  <table>
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}">
+      <td><span th:text="${allPlayers.firstName}">First Name</span></td>
+      <td><span th:text="${allPlayers.lastName}">Last Name</span></td>
+    </tr>
+    </tbody>
+  </table>
 
 </body>
 

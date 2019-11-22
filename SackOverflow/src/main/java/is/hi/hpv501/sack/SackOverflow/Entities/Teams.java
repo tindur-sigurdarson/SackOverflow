@@ -13,15 +13,17 @@ public class Teams {
         private String deild;
         private int id;
         private int rank;
+        private String record;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long idd;
         public Teams(){}
-        public Teams(String deild,int id, String name, int rank) {
+        public Teams(String deild,int id, String name, int rank,String record) {
             this.deild=deild;
             this.id = id;
             this.name = name;
             this.rank = rank;
+            this.record = record;
         }
 
         public String getDeild() {
@@ -56,8 +58,16 @@ public class Teams {
             this.rank = rank;
         }
 
-        @Override
+        public String getRecord() {
+            return record;
+        }
+
+        public void setRecord(String record) {
+            this.record = record;
+        }
+
+    @Override
         public String toString() {
-            return id +'\''+name+'\'' + rank+ '\''+ deild;
+            return id +'\''+name+'\'' + rank+ '\''+ deild + record;
         }
     }
