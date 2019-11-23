@@ -13,4 +13,5 @@ public interface TeamService {
     Optional<Teams> findById(long id);
     List<Teams> findTeamsByDeildAndRank(String deild,int rank);
 
+
 }

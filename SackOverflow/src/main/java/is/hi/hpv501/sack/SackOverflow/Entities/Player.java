@@ -4,6 +4,7 @@ package is.hi.hpv501.sack.SackOverflow.Entities;
 
 
 import javax.persistence.*;
+import java.awt.*;
 
 
 @Entity
@@ -50,6 +51,7 @@ public class Player {
     private int xpMade;
     private int xpAtt;
     private double xpPct;
+    private String mynd;
 
 
     public Player(){
@@ -61,7 +63,8 @@ public class Player {
                   int passYards, int passTD, int passInt, int rushAttempts, int rushYards, double rushAvg,
                   int rushTD, int targets, int receptions, int recYards, int recTD, int tackleTotal,
                   double sacks, int safeties, int interceptions, int intTD, int fumbles, int fumForced,
-                  int fgMade, int fgAtt, double fgPct, int fgLng, int xpMade, int xpAtt, double xpPct) {
+                  int fgMade, int fgAtt, double fgPct, int fgLng, int xpMade,
+                  int xpAtt, double xpPct, String mynd) {
 
         this.playerID = playerID;
         this.firstName = firstName;
@@ -98,6 +101,7 @@ public class Player {
         this.xpMade = xpMade;
         this.xpAtt = xpAtt;
         this.xpPct = xpPct;
+        this.mynd = mynd;
     }
 
 
@@ -383,6 +387,14 @@ public class Player {
         this.xpPct = xpPct;
     }
 
+    public String getMynd() {
+        return mynd;
+    }
+
+    public void setMynd(String mynd) {
+        this.mynd = mynd;
+    }
+
     @Override
     public String toString() {
 
@@ -406,7 +418,7 @@ public class Player {
                     ", rushAvg=" + rushAvg +
                     ", rushTD=" + rushTD +
                     ", fumbles=" + fumbles+
-                  '}';
+                    '}';
         }
         if(position.equals("RB")){
             return "Player{" +
