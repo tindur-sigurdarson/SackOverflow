@@ -1,0 +1,540 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/games.css" th:href="@{/css/games.css}" rel="stylesheet" />
+  <title>Games</title>
+
+</head>
+
+<body>
+
+  <script>
+    function veljaviku() {
+      var s = document.getElementById("1");
+      s.style.display = "none";
+      var s = document.getElementById("2");
+      s.style.display = "none";
+      var s = document.getElementById("3");
+      s.style.display = "none";
+      var s = document.getElementById("4");
+      s.style.display = "none";
+      var s = document.getElementById("5");
+      s.style.display = "none";
+      var s = document.getElementById("6");
+      s.style.display = "none";
+      var s = document.getElementById("7");
+      s.style.display = "none";
+      var s = document.getElementById("8");
+      s.style.display = "none";
+      var s = document.getElementById("9");
+      s.style.display = "none";
+      var s = document.getElementById("10");
+      s.style.display = "none";
+      var s = document.getElementById("11");
+      s.style.display = "none";
+      var s = document.getElementById("12");
+      s.style.display = "none";
+      var s = document.getElementById("13");
+      s.style.display = "none";
+      var s = document.getElementById("14");
+      s.style.display = "none";
+      var s = document.getElementById("15");
+      s.style.display = "none";
+      var s = document.getElementById("16");
+      s.style.display = "none";
+      var s = document.getElementById("17");
+      s.style.display = "none";
+      var x = document.getElementById("vikur").value;
+      if (x == 'week1') {
+        var s = document.getElementById("1");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week2') {
+        var s = document.getElementById("2");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week3') {
+        var s = document.getElementById("3");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week4') {
+        var s = document.getElementById("4");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week5') {
+        var s = document.getElementById("5");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week6') {
+        var s = document.getElementById("6");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week7') {
+        var s = document.getElementById("7");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week8') {
+        var s = document.getElementById("8");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week9') {
+        var s = document.getElementById("9");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week10') {
+        var s = document.getElementById("10");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week11') {
+        var s = document.getElementById("11");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week12') {
+        var s = document.getElementById("12");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week13') {
+        var s = document.getElementById("13");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week14') {
+        var s = document.getElementById("14");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week15') {
+        var s = document.getElementById("15");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week16') {
+        var s = document.getElementById("16");
+        s.style.display = "inline-block";
+      }
+      if (x == 'week17') {
+        var s = document.getElementById("17");
+        s.style.display = "inline-block";
+      }
+    }
+
+  </script>
+
+  <header>
+    <h1>Sack Overflow</h1>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
+        <li><a href="/Games">Games</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <div class="select-week">
+
+    <h3>Select Gameweek</h3>
+
+    <select id="vikur" onchange="veljaviku()">
+      <option value="week1">1</option>
+      <option value="week2">2</option>
+      <option value="week3">3</option>
+      <option value="week4">4</option>
+      <option value="week5">5</option>
+      <option value="week6">6</option>
+      <option value="week7">7</option>
+      <option value="week8">8</option>
+      <option value="week9">9</option>
+      <option value="week10">10</option>
+      <option value="week11">11</option>
+      <option value="week12">12</option>
+      <option value="week13">13</option>
+      <option value="week14">14</option>
+      <option value="week15">15</option>
+      <option value="week16">16</option>
+      <option value="week17">17</option>
+    </select>
+  </div>
+
+  <div class="allir">
+
+  <table id="1">
+    <caption>Gameweek 1</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 1}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="2">
+    <caption>Gameweek 2</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 2}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="3">
+    <caption>Gameweek 3</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 3}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="4">
+    <caption>Gameweek 4</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 4}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+  <table id="5">
+    <caption>Gameweek 5</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 5}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="6">
+    <caption>Gameweek 6</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 6}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="7">
+    <caption>Gameweek 7</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 7}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="8">
+    <caption>Gameweek 8</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 8}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="9">
+    <caption>Gameweek 9</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 9}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="10">
+    <caption>Gameweek 10</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 10}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="11">
+    <caption>Gameweek 11</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 11}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="12">
+    <caption>Gameweek 12</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 12}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="13">
+    <caption>Gameweek 13</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 13}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="14">
+    <caption>Gameweek 14</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 14}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="15">
+    <caption>Gameweek 15</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 15}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="16">
+    <caption>Gameweek 16</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 16}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+
+    <table id="17">
+    <caption>Gameweek 17</caption>
+    <thead>
+    <tr>
+      <th>Date</th>
+      <th>Time</th>
+      <th>Away Team</th>
+      <th>Home Team</th>
+      <th>Location</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allGames: ${allGames}" th:if="${allGames.week == 17}">
+      <td th:text="${allGames.date}" />
+      <td th:text="${allGames.time}" />
+      <td th:text="${allGames.awayTeam}" />
+      <td th:text="${allGames.homeTeam}" />
+      <td th:text="${allGames.location}" />
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
+</body>
+
+</html>
+
