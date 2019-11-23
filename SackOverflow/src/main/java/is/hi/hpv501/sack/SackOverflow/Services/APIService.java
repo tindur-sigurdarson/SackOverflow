@@ -14,6 +14,8 @@ public interface APIService {
 
     List<Game> getAllGames() throws  IOException;
 
+    List<Player> getImage() throws IOException;
+
     String getGamesByWeek(int weekNr) throws IOException;
 
     String getGameScoreByDay(String date, String away, String home, int nr) throws IOException;

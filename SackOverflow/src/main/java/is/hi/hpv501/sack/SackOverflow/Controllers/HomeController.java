@@ -52,7 +52,6 @@ public class HomeController {
     }
 
 
-
     @RequestMapping(value="/Teams", method = RequestMethod.GET)
     public String getAllTeams(Model model) throws IOException {
 
@@ -61,7 +60,7 @@ public class HomeController {
             Teams p = (Teams) teams.get(i);
             teamService.save(p);
         }
-        model.addAttribute("allTeams",teamService.findAll());
+
         //AFC East
         Teams afcEast0 = (Teams) teams.get(0);
         model.addAttribute("afcEast1",afcEast0.getName());
@@ -198,10 +197,12 @@ public class HomeController {
     @RequestMapping(value="/players", method = RequestMethod.GET)
     public String players(Model model) throws IOException {
         List playerAPI = apiService.getAllPlayers();
-        for(int i=0; i<playerAPI.size();i++){
+        /*for(int i=0; i<playerAPI.size();i++){
             Player p = (Player) playerAPI.get(i);
             playerService.save(p);
         }
+         */
+
         model.addAttribute("allPlayers",playerAPI);
 
         return "players";

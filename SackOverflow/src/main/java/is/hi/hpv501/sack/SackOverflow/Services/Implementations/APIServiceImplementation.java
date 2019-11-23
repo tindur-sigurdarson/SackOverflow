@@ -24,9 +24,51 @@ public class APIServiceImplementation implements APIService {
     private String linkur = "";
     private String apiKey = "35c57403-430a-49e1-bca6-c14fa2";
 
+
     public APIServiceImplementation() {
     }
+    @Override
+    public List<Player> getImage(){
+        try {
+            String token = apiKey + ":3DUbP77j";
+            byte[] src = token.getBytes();
+            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/active_players.json");
+            String encoding = Base64.getUrlEncoder().encodeToString(src);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setDoOutput(true);
+            connection.setRequestProperty("Authorization", "Basic " + encoding);
+            InputStream content = (InputStream) connection.getInputStream();
+            BufferedReader in =
+                    new BufferedReader(new InputStreamReader(content));
+            //Listi búinn til fyrir lið
+            List<Player> listi = new ArrayList<>();
+            String line;
+            while ((line = in.readLine()) != null) {
+                //System.out.println(line);
+                JSONObject o = new JSONObject(line);
+                JSONObject obj = o.getJSONObject("activeplayers");
+                JSONArray arr = obj.getJSONArray("playerentry");
+                for(int i=0; i<arr.length();i++){
+                    Player pl = new Player();
+                    JSONObject c = (JSONObject) arr.get(i);
 
+                    JSONObject player = c.getJSONObject("player");
+                    pl.setPlayerID(player.getInt("ID"));
+
+                    String m = player.getString("officialImageSrc");
+                    pl.setMynd(m);
+
+                    listi.add(pl);
+
+                }
+               return listi;
+            }
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
     @Override
     public List<Player> getAllPlayers() throws IOException {
         try {
@@ -42,13 +84,15 @@ public class APIServiceImplementation implements APIService {
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
             String line;
+            List<Player> myndalisti = getImage();
+            List<Player> leikmannalisti = new ArrayList<Player>();
             while ((line = in.readLine()) != null) {
-
+                //System.out.println(line);
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("cumulativeplayerstats");
                 JSONArray jsonArr = obj2.getJSONArray("playerstatsentry");
                 //Listi búinn til fyrir leikmenn
-                List<Player> leikmannalisti = new ArrayList<Player>();
+
                 for (int i = 0; i < jsonArr.length(); i++) {
                     Player play = new Player();
                     JSONObject c = (JSONObject) jsonArr.get(i);
@@ -254,12 +298,22 @@ public class APIServiceImplementation implements APIService {
                         play.setXpPct(xpPct.getDouble("#text"));
                     }
 
-                    play.setPlayerID(i);
+                    play.setPlayerID(id);
                     play.setLastName(lastName);
                     play.setFirstName(firstName);
                     play.setPosition(position);
                     play.setGamesPlayed(gamesplayed);
+                    //try {
+                        play.setMynd(myndalisti.get(i).getMynd());
+                   // }catch (Exception e){
+
+                    //}
                     //bæta leikmönnum í arraylist
+                    /*List<Player> myndalisti = getImage();
+
+                        Player lei = myndalisti.get(i);
+                        play.setMynd(lei.getMynd());
+                     */
                     leikmannalisti.add(play);
                 }
                 return leikmannalisti;
@@ -271,6 +325,8 @@ public class APIServiceImplementation implements APIService {
 
         return null;
     }
+
+
 
     @Override
     public List<Teams> getAllTeams() throws IOException {
@@ -291,7 +347,7 @@ public class APIServiceImplementation implements APIService {
 
             String line;
             while ((line = in.readLine()) != null) {
-                System.out.println(line);
+                //System.out.println(line);
                 //  JSON obj búinn til
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("divisionteamstandings");
@@ -358,6 +414,7 @@ public class APIServiceImplementation implements APIService {
 
             String line;
             while ((line = in.readLine()) != null) {
+                //System.out.println(line);
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("fullgameschedule");
                 JSONArray jsonArray = obj2.getJSONArray("gameentry");
@@ -368,7 +425,7 @@ public class APIServiceImplementation implements APIService {
                     leikir.setDate(c.getString("date"));
                     leikir.setTime(c.getString("time"));
                     leikir.setWeek(c.getInt("week"));
-
+                    leikir.setLocation(c.getString("location"));
                     JSONObject home = c.getJSONObject("homeTeam");
                     leikir.setHomeTeam(home.getString("City") + " " + home.getString("Name"));
 
@@ -384,6 +441,7 @@ public class APIServiceImplementation implements APIService {
         }
         return null;
     }
+
 
     @Override
     public String getGamesByWeek(int weekNr) throws IOException {
