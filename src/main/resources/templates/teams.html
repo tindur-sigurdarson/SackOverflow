@@ -1,0 +1,241 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/teams.css" th:href="@{/css/teams.css}" rel="stylesheet" />
+  <title>Teams</title>
+</head>
+
+<body>
+  <header>
+    <h1>Sack Overflow</h1>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
+        <li><a href="/Games">Games</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Teams</h2>
+    <table class="afc_east">
+      <caption>AFC East</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcEast1}"></span></th>
+          <th><span th:text="${afcEast11}"></span></th>
+        </tr>
+        <tr>
+            <th><span th:text="${afcEast2}"></span></th>
+            <th><span th:text="${afcEast22}"></span></th>
+        </tr>
+        <tr>
+            <th><span th:text="${afcEast3}"></span></th>
+            <th><span th:text="${afcEast33}"></span></th>
+        </tr>
+        <tr>
+            <th><span th:text="${afcEast4}"></span></th>
+            <th><span th:text="${afcEast44}"></span></th>
+        </tr>
+      </thead>
+    </table>
+
+    <table class="afc_west">
+      <caption>AFC West</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcWest1}"></span></th>
+          <th><span th:text="${afcWest11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcWest2}"></span></th>
+          <th><span th:text="${afcWest22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcWest3}"></span></th>
+          <th><span th:text="${afcWest33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcWest4}"></span></th>
+          <th><span th:text="${afcWest44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="afc_north">
+      <caption>AFC North</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcNorth1}"></span></th>
+          <th><span th:text="${afcNorth11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcNorth2}"></span></th>
+          <th><span th:text="${afcNorth22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcNorth3}"></span></th>
+          <th><span th:text="${afcNorth33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcNorth4}"></span></th>
+          <th><span th:text="${afcNorth44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="afc_south">
+      <caption>AFC South</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcSouth1}"></span></th>
+          <th><span th:text="${afcSouth11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcSouth2}"></span></th>
+          <th><span th:text="${afcSouth22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcSouth3}"></span></th>
+          <th><span th:text="${afcSouth33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${afcSouth4}"></span></th>
+          <th><span th:text="${afcSouth44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="nfc_east">
+      <caption>NFC East</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcEast1}"></span></th>
+          <th><span th:text="${nfcEast11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcEast2}"></span></th>
+          <th><span th:text="${nfcEast22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcEast3}"></span></th>
+          <th><span th:text="${nfcEast33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcEast4}"></span></th>
+          <th><span th:text="${nfcEast44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="nfc_west">
+      <caption>NFC West</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcWest1}"></span></th>
+          <th><span th:text="${nfcWest11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcWest2}"></span></th>
+          <th><span th:text="${nfcWest22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcWest3}"></span></th>
+          <th><span th:text="${nfcWest33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcWest4}"></span></th>
+          <th><span th:text="${nfcWest44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="nfc_north">
+      <caption>NFC North</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcNorth1}"></span></th>
+          <th><span th:text="${nfcNorth11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcNorth2}"></span></th>
+          <th><span th:text="${nfcNorth22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcNorth3}"></span></th>
+          <th><span th:text="${nfcNorth33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcNorth4}"></span></th>
+          <th><span th:text="${nfcNorth44}"></span></th>
+        </tr>
+      </thead>
+
+    </table>
+
+    <table class="nfc_south">
+      <caption>NFC South</caption>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>W-L-T</th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcSouth1}"></span></th>
+          <th><span th:text="${nfcSouth11}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcSouth2}"></span></th>
+          <th><span th:text="${nfcSouth22}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcSouth3}"></span></th>
+          <th><span th:text="${nfcSouth33}"></span></th>
+        </tr>
+        <tr>
+          <th><span th:text="${nfcSouth4}"></span></th>
+          <th><span th:text="${nfcSouth44}"></span></th>
+        </tr>
+      </thead>
+    </table>
+
+</body>
+
+</html>

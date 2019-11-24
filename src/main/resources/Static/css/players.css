@@ -1,0 +1,20 @@
+body h2 {
+  padding-left: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  display: inline-table;
+  width: 24.5%;
+  margin-bottom: 20px;
+}
+
+th {
+  border: 1px solid #fff;
+  padding: 15px;
+}
+
+td{
+  border: 1px solid #fff;
+  padding: 15px;
+}

@@ -1,0 +1,38 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/login.css" th:href="@{/css/login.css}" rel="stylesheet" />
+  <title>Login</title>
+
+</head>
+
+<body>
+  <header>
+    <h1>Sack Overflow</h1>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
+        <li><a href="/Games">Games</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Login to your account</h2>
+  <form action="players" th:action="@{/login}" th:object="${user}" method="post">
+    <input type="text" name="username" id="username" th:field="*{uName}" />
+    <input type="text" name="password" id="password" th:value="*{password}" />
+    <input type="submit" value="Login" />
+  </form>
+
+  <h2>Sign up for an account</h2>
+  <ul class="signup__link">
+    <li><a href="/signup">Sign up</a></li>
+  </ul>
+</body>
+
+</html>

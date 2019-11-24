@@ -1,0 +1,54 @@
+<!doctype html>
+<html xmlns:th="https://thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
+  <link href="../Static/css/players.css" th:href="@{/css/players.css}" rel="stylesheet" />
+  <title>Players</title>
+</head>
+
+<body>
+  <header>
+    <h1>Sack Overflow</h1>
+    <nav>
+      <ul class="nav__links">
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
+        <li><a href="/Games">Games</a></li>
+        <li><a href="/login">Login</a></li>
+      </ul>
+    </nav>
+  </header>
+  <h2>Search for Players</h2>
+  <form action="#" th:action="@{/playerSearch}" th:object="${players}"  method="post">
+    <input type="text" name="search" id="search" th:value="${search}"/>
+    <input type="submit" value="Search"/>
+  </form>
+  <h1>Player list</h1>
+  <table>
+    <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>mynd</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td>
+      <img th:if="${allPlayers.mynd} != null" th:src="${allPlayers.mynd}"/>
+      <!--img th:src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/ABE643008.png"/-->
+    </td>
+
+    </tr>
+    </tbody>
+  </table>
+
+</body>
+
+</html>
