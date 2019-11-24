@@ -6,6 +6,7 @@
   <link href="../Static/css/menu.css" th:href="@{/css/menu.css}" rel="stylesheet" />
   <link href="../Static/css/signup.css" th:href="@{/css/signup.css}" rel="stylesheet" />
   <title>Signup</title>
+
 </head>
 
 <body>
@@ -13,27 +14,53 @@
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
-        <li>
-          <a href="/SackOverflow">Home</a>
-        </li>
-        <li>
-          <a href="/players">Players</a>
-          <p>
-            <span th:text="${allplayers}"></span>
-          </p>
-        </li>
-        <li><a href="/Teams">Teams</a>
-          <p> <span th:text="${allTeams}"></span> </p>
-        </li>
+        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/players">Players</a></li>
+        <li><a href="/Teams">Teams</a></li>
         <li><a href="/Games">Games</a></li>
         <li><a href="/login">Login</a></li>
       </ul>
     </nav>
   </header>
+
   <h2>Signup for an account</h2>
   <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
     <input type="text" name="username" id="username" th:field="*{uName}" />
     <input type="text" name="password" id="password" th:value="*{password}" />
+    <Select type="text" name="favTeam" id="favTeam" th:value="*{favTeam}"/>
+      <option value="MIA">CHOOSE FOR ME</option>
+      <option value="ARI">ARIZONA CARDINALS</option>
+      <option value="ATL">ATLANTA FALCONS</option>
+      <option value="BAL">BALTIMORE RAVENS</option>
+      <option value="BUF">BUFFALO BILLS</option>
+      <option value="CAR">CAROLINA PANTHERS</option>
+      <option value="CIN">CINCINNATI BENGALS</option>
+      <option value="CHI">CHICAGO BEARS</option>
+      <option value="CLE">CLEVELAND BROWNS</option>
+      <option value="DAL">DALLAS COWBOYS</option>
+      <option value="DEN">DENVER BRONCOS</option>
+      <option value="DET">DETROIT LIONS</option>
+      <option value="GRE">GREEN BAY PACKERS</option>
+      <option value="HOU">HOUSTON TEXANS</option>
+      <option value="IND">INDIANAPOLIS COLTS</option>
+      <option value="JAC">JACKSONVILLE JAGUARS</option>
+      <option value="KAN">KANSAS CITY CHIEFS</option>
+      <option value="LAC">LOS ANGELES CHARGERS</option>
+      <option value="LAR">LOS ANGELES RAMS</option>
+      <option value="MIA">MIAMI DOLPHINS</option>
+      <option value="MIN">MINNESOTA VIKINGS</option>
+      <option value="MIA">NEW ENGLAND PATRIOTS</option>
+      <option value="NOS">NEW ORLEANS SAINTS</option>
+      <option value="NYG">NEW YORK GIANTS</option>
+      <option value="NYJ">NEW YORK JETS</option>
+      <option value="OAK">OAKLAND RAIDERS</option>
+      <option value="PHI">PHILADELPHIA EAGLES</option>
+      <option value="PIT">PITTSBURGH STEELERS</option>
+      <option value="SAN">SAN FRANCISCO 49ERS</option>
+      <option value="SEA">SEATTLE SEAHAWKS</option>
+      <option value="TAM">TAMPA BAY BUCCANEERS</option>
+      <option value="TEN">TENNESSEE TITANS</option>
+      <option value="WAS">WASHINGTON REDSKINS</option>
     <input type="submit" value="Signup" />
   </form>
 </body>

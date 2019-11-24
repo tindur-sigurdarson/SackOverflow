@@ -13,7 +13,6 @@ public interface PlayerRepository extends JpaRepository<Player,Long> {
     Player save(Player player);
     void delete (Player player);
     List<Player> findAll();
-    List<Player> findByFirstName(String name);
-    List<Player> findByLastName(String name);
+    List<Player> findByFirstNameIgnoreCaseOrLastNameIgnoreCase(String firstName, String lastName);
     Optional<Player> findById(long id);
 }

@@ -34,20 +34,15 @@ public class PlayerServiceImplementation implements PlayerService {
     }
 
     @Override
+    public List<Player> findByFirstNameIgnoreCaseOrLastNameIgnoreCase(String firstName, String lastName) {
+        return repository.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(firstName,lastName);
+    }
+
+    @Override
     public Optional<Player> findById(long id) {
         return repository.findById(id);
     }
 
 
-
-    @Override
-    public List<Player> findByFirstName(String name) {
-        return repository.findByFirstName(name);
-    }
-
-    @Override
-    public List<Player> findByLastName(String name) {
-        return repository.findByLastName(name);
-    }
 }
 
