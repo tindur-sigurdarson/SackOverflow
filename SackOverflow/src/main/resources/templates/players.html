@@ -27,27 +27,235 @@
     <input type="submit" value="Search"/>
   </form>
   <h1>Player list</h1>
+  <div class="toflur">
   <table>
+    <caption>Quarterbacks</caption>
     <thead>
     <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
       <th>First Name</th>
       <th>Last Name</th>
-      <th>mynd</th>
-      <th></th>
+      <th>Team</th>
+      <th>Games Played</th>
+      <th>Pass Attempts</th>
+      <th>Pass Completions</th>
+      <th>Passing Yards</th>
+      <th>Passing Touchdowns</th>
+      <th>Passing Interceptions</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="allPlayers : ${allPlayers}">
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'QB'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
       <td th:text="${allPlayers.firstName}">
       <td th:text="${allPlayers.lastName}">
-      <td>
-      <img th:if="${allPlayers.mynd} != null" th:src="${allPlayers.mynd}"/>
-      <!--img th:src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/ABE643008.png"/-->
-    </td>
-
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.passAttempts}">
+      <td th:text="${allPlayers.passCompletion}">
+      <td th:text="${allPlayers.passYards}">
+      <td th:text="${allPlayers.passTD}">
+      <td th:text="${allPlayers.passInt}">
     </tr>
     </tbody>
   </table>
+
+  <table>
+    <caption>Running Backs</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Games Played</th>
+      <th>Rush Attempts</th>
+      <th>Rushing Yards</th>
+      <th>Rushing Average</th>
+      <th>Rushing Touchdowns</th>
+      <th>Fumbles</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'RB'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.rushAttempts}">
+      <td th:text="${allPlayers.rushYards}">
+      <td th:text="${allPlayers.rushAvg}">
+      <td th:text="${allPlayers.rushTD}">
+      <td th:text="${allPlayers.fumbles}">
+    </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Wide Receivers</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Games Played</th>
+      <th>Targets</th>
+      <th>Receptions</th>
+      <th>Receiving Yards</th>
+      <th>Receiving Touchdowns</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'WR'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.targets}">
+      <td th:text="${allPlayers.receptions}">
+      <td th:text="${allPlayers.recYards}">
+      <td th:text="${allPlayers.recTD}">
+    </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Tight Ends</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Games Played</th>
+      <th>Targets</th>
+      <th>Receptions</th>
+      <th>Receiving Yards</th>
+      <th>Receiving Touchdowns</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'TE'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.targets}">
+      <td th:text="${allPlayers.receptions}">
+      <td th:text="${allPlayers.recYards}">
+      <td th:text="${allPlayers.recTD}">
+    </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Defensive Players</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Position</th>
+      <th>Games Played</th>
+      <th>Tackles</th>
+      <th>Sacks</th>
+      <th>Interceptions</th>
+      <th>Fumbles Forced</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'DB' || allPlayers.position == 'LB' || allPlayers.position == 'CB'
+     || allPlayers.position == 'SS' || allPlayers.position == 'DT' || allPlayers.position == 'ILB' || allPlayers.position == 'DE'
+     || allPlayers.position == 'OLB' || allPlayers.position == 'MLB' || allPlayers.position == 'FS'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.position}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.tackleTotal}">
+      <td th:text="${allPlayers.sacks}">
+      <td th:text="${allPlayers.interceptions}">
+      <td th:text="${allPlayers.fumForced}">
+    </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Kickers</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Games Played</th>
+      <th>Field Goal Attempts</th>
+      <th>Field Goals Made</th>
+      <th>Longest Field Goal</th>
+      <th>Extra Point Attempts</th>
+      <th>Extra Points Made</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'K'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.fgAtt}">
+      <td th:text="${allPlayers.fgMade}">
+      <td th:text="${allPlayers.fgLng}">
+      <td th:text="${allPlayers.xpAtt}">
+      <td th:text="${allPlayers.xpMade}">
+    </tr>
+    </tbody>
+  </table>
+
+  <table>
+    <caption>Other Players</caption>
+    <thead>
+    <tr>
+      <th>Picture</th>
+      <th>Jersey</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Team</th>
+      <th>Games Played</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'OT'
+     || allPlayers.position == 'G' || allPlayers.position == 'C' || allPlayers.position == 'P'}">
+      <td th:text="${allPlayers.mynd}">
+      <td th:text="${allPlayers.jersey}">
+      <td th:text="${allPlayers.firstName}">
+      <td th:text="${allPlayers.lastName}">
+      <td th:text="${allPlayers.team}">
+      <td th:text="${allPlayers.gamesPlayed}">
+    </tr>
+    </tbody>
+  </table>
+  </div>
+
 
 </body>
 
