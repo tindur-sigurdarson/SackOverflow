@@ -10,10 +10,16 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private  String uName;
+    private String uName;
     private String password;
+    private String favTeam;
 
     public User(){
+    }
+    public User(String uName, String password, String favTeam){
+        this.uName = uName;
+        this.password = password;
+        this.favTeam = favTeam;
     }
 
     public long getId(){
@@ -38,6 +44,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getFavTeam() {
+        return favTeam;
+    }
+
+    public void setFavTeam(String favTeam) {
+        this.favTeam = favTeam;
     }
 
     @Override

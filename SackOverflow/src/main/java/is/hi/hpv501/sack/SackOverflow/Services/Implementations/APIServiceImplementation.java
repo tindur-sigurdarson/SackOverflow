@@ -92,7 +92,6 @@ public class APIServiceImplementation implements APIService {
                 JSONObject obj2 = obj.getJSONObject("cumulativeplayerstats");
                 JSONArray jsonArr = obj2.getJSONArray("playerstatsentry");
                 //Listi búinn til fyrir leikmenn
-
                 for (int i = 0; i < jsonArr.length(); i++) {
                     Player play = new Player();
                     JSONObject c = (JSONObject) jsonArr.get(i);
@@ -163,7 +162,6 @@ public class APIServiceImplementation implements APIService {
                         JSONObject passInt = stats.getJSONObject("PassInt");
                         int passInter = passInt.getInt("#text");
                         play.setPassInt(passInter);
-
                         try {
                             JSONObject fumbles = stats.getJSONObject("Fumbles");
                             int fum = fumbles.getInt("#text");
@@ -188,6 +186,7 @@ public class APIServiceImplementation implements APIService {
                             int rushYards = 0;
                             play.setRushYards(rushYards);
                         }
+
                     }
                     if (position.equals("QB") || position.equals("RB")) {
                         try {
@@ -225,7 +224,7 @@ public class APIServiceImplementation implements APIService {
                         play.setRecTD(receptTd);
                         try {
                             JSONObject fumbles = stats.getJSONObject("Fumbles");
-                            play.setFumbles(fumbles.getInt("Text"));
+                            play.setFumbles(fumbles.getInt("#text"));
                         } catch (JSONException e) {
                             play.setFumbles(0);
                         }
@@ -309,11 +308,12 @@ public class APIServiceImplementation implements APIService {
 
                     //}
                     //bæta leikmönnum í arraylist
-                    /*List<Player> myndalisti = getImage();
 
-                        Player lei = myndalisti.get(i);
-                        play.setMynd(lei.getMynd());
-                     */
+                    for(int j =0; j<myndalisti.size(); j++) {
+                        if(myndalisti.get(j).getPlayerID()==play.getPlayerID()) {
+                            play.setMynd(myndalisti.get(j).getMynd());
+                        }
+                    }
                     leikmannalisti.add(play);
                 }
                 return leikmannalisti;
@@ -383,11 +383,13 @@ public class APIServiceImplementation implements APIService {
                         String ties = T.getString("#text");
                         String record = win+"-"+loss+"-"+ties;
                         lidstats.setRecord(record);
+
                         // lið sett í lista
                         listi.add(lidstats);
                     }
                 }
             }
+
             return listi;
         } catch(Exception e) {
             e.printStackTrace();

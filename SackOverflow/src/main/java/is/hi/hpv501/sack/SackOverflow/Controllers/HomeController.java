@@ -197,11 +197,10 @@ public class HomeController {
     @RequestMapping(value="/players", method = RequestMethod.GET)
     public String players(Model model) throws IOException {
         List playerAPI = apiService.getAllPlayers();
-        /*for(int i=0; i<playerAPI.size();i++){
+        for(int i=0; i<playerAPI.size();i++){
             Player p = (Player) playerAPI.get(i);
             playerService.save(p);
         }
-         */
 
         model.addAttribute("allPlayers",playerAPI);
 
@@ -224,63 +223,10 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String signUpGET(User user){
-        return "signup";
-    }
-    @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signUpPOST(@Valid User user, BindingResult result, Model model){
-        if(result.hasErrors()){
-            return "signup";
-        }
-        //User exists = userService.findByUName(user.getuName());
-        //if(exists == null){
-            userService.save(user);
-        //}
-        model.addAttribute("users", userService.findAll());
-        return "index";
-    }
 
-    @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String usersGET(Model model){
-        model.addAttribute("users", userService.findAll());
-        return "users";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginGET(User user){
-        return "login";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession session){
-        if(result.hasErrors()){
-            return "login";
-        }
-        model.addAttribute("movies",userService.findAll());
-        User exists = userService.login(user);
-        if(exists != null){
-            session.setAttribute("LoggedInUser", user);
-            return "redirect:/";
-        }
-        return "redirect:/";
-    }
-
-    @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedinGET(HttpSession session, Model model){
-        model.addAttribute("movies",userService.findAll());
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
-        if(sessionUser  != null){
-            model.addAttribute("loggedinuser", sessionUser);
-            return "loggedInUser";
-        }
-        return "redirect:/";
-    }
     @RequestMapping(value= "/playerSearch", method = RequestMethod.POST)
     public String searchPlayer(@RequestParam(value = "search", required = false) String search, Model model){
-
-        List<Player> player = playerService.findByFirstName(search);
-        //List<Player> playlast = playerService.findByLastName(search);
+        List<Player> player = playerService.findByFirstNameIgnoreCaseOrLastNameIgnoreCase(search,search);
         model.addAttribute("allPlayers", player);
         return "players";
     }
