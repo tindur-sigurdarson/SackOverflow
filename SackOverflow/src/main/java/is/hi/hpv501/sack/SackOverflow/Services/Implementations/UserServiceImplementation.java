@@ -39,6 +39,7 @@ public class UserServiceImplementation implements UserService {
             return repository.findByUName(uName);
         }
 
+
         @Override
         public User login (User user){
             User exists = findByUName(user.getuName());
@@ -48,6 +49,5 @@ public class UserServiceImplementation implements UserService {
                 }
             }
             return null;
-
         }
     }

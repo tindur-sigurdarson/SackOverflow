@@ -13,7 +13,7 @@
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
-        <li><a href="/SackOverflow">Home</a></li>
+        <li><a href="/">Home</a></li>
         <li><a href="/players">Players</a></li>
         <li><a href="/Teams">Teams</a></li>
         <li><a href="/Games">Games</a></li>
@@ -22,6 +22,41 @@
     </nav>
   </header>
   <h2>Sack Overflow</h2>
+  <!--  <span th:if="${uppahalds.favTeam == 'ARI'}">
+      <body style="background-color:powderblue;"/>
+    </span>
+<p th:text="${notandi}"></p>
+   -->
+  <div th:if="${notandi == null}">
+    <h3>Heldur sigurganga Ravens áfram?</h3>
+    <a href="/login">Login to read more!</a>
+  </div>
+  <div th:if="${notandi != null}">
+    <h2>Welcome</h2>
+    <h2 th:text="${notandi.uName}"/>
+    <h2>Your Favorate team is:</h2>
+    <div th:switch="notandi.favTeam">
+      <span th:case="'0'">
+        <h2>Arizona Cardinals</h2>
+      </span>
+      <span th:case="*">
+        <h2>Miami Dolphins</h2>
+      </span>
+    </div>
+
+
+    <h3>Heldur sigurganga Ravens áfram?</h3>
+    <p>Ravens(8-2) - Rams(6-4)</p>
+    <p>Baltimore Ravens, með Lamar Jackson í aðahlutverki, hafa sundurspilað hvert liðið á fætur öðru eftir
+      slaka byrjun liðsins á tímabilinu. Eftir tvö töp í röð í byrjun tímabils hefur spilamennska liðsins verið óáðfinnanleg.
+      Liðið hefur unnið sex leiki í röð og fáa veikleika er að finna í spilamennskunni. Niðurstaðan eru 34 stig skoruð
+      og 16 stig fengin að meðaltali í leikjunum sex og liðið virðist fullt sjálfstrausts og stefnir í átt að úrslitakeppninni.
+      Þessi tölfræði er einkar eftirteknaverð þegar litið er á styrk suma andstæðingana.
+      Í þessari sex leikja sigurgöngu hefur liðið sigrað Seatle Seahawks(8-2) og New England Patriots (9-1) en Patriots
+      voru taplausir fyrir heimaleikinn sinn gegn Ravens.
+      Heldur vörn Rams út gegn sterkri sókn Ravens eða heldur sigurganga Ravens-liðsins áfram?</p>
+    <p>- Arnar Ingi Njarðarson</p>
+  </div>
 
 </body>
 

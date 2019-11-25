@@ -19,7 +19,6 @@ import java.util.List;
 
 @Controller
 public class UserController {
-
     private UserService userService;
     @Autowired
     public UserController(UserService userService){
@@ -38,6 +37,8 @@ public class UserController {
         User exists = userService.findByUName(user.getuName());
         if(exists == null){
         userService.save(user);
+        }else{
+            return null;
         }
         model.addAttribute("users", userService.findAll());
         return "login";
@@ -56,22 +57,25 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession session){
+
         if(result.hasErrors()){
             return "login";
         }
         model.addAttribute("users",userService.findAll());
         User exists = userService.login(user);
+
         if(exists != null){
             session.setAttribute("loggedInUser", user);
             return "redirect:/";
         }
-        return "redirect:/";
+        return null;
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
     public String loggedinGET(HttpSession session, Model model){
         model.addAttribute("users",userService.findAll());
-        User sessionUser = (User) session.getAttribute("LoggedInUser");
+
+        User sessionUser = (User) session.getAttribute("loggedInUser");
         if(sessionUser  != null){
             model.addAttribute("loggedInUser", sessionUser);
             return "loggedInUser";

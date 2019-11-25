@@ -26,7 +26,7 @@
   <h2>Signup for an account</h2>
   <form action="#" th:action="@{/signup}" th:object="${user}" method="post">
     <input type="text" name="username" id="username" th:field="*{uName}" />
-    <input type="text" name="password" id="password" th:value="*{password}" />
+    <input type="password" name="password" id="password" th:value="*{password}" />
     <Select type="text" name="favTeam" id="favTeam" th:value="*{favTeam}"/>
       <option value="MIA">CHOOSE FOR ME</option>
       <option value="ARI">ARIZONA CARDINALS</option>
