@@ -39,9 +39,22 @@ public class HomeController {
     }
 
     @RequestMapping("/")
-    public String Home(Model model) throws IOException, JSONException {
+    public String Home(Model model, HttpSession session) throws IOException, JSONException {
+        User sessionUser = (User) session.getAttribute("loggedInUser");
 
-        return "index";
+        List<User> us = userService.findAll();
+        for(int i =0; i<us.size();i++){
+            if(us.get(i).getuName().equals(sessionUser.getuName())){
+                sessionUser.setFavTeam(us.get(i).getFavTeam());
+                break;
+            }
+        }
+        if(sessionUser !=null){
+            model.addAttribute("notandi",sessionUser);
+        }else{
+            model.addAttribute("notandi",null);
+        }
+        return "Index";
     }
 
     
@@ -196,13 +209,15 @@ public class HomeController {
         
     @RequestMapping(value="/players", method = RequestMethod.GET)
     public String players(Model model) throws IOException {
-        List playerAPI = apiService.getAllPlayers();
-        for(int i=0; i<playerAPI.size();i++){
-            Player p = (Player) playerAPI.get(i);
-            playerService.save(p);
+        if(playerService.findAll().isEmpty()) {
+            List playerAPI = apiService.getAllPlayers();
+            for (int i = 0; i < playerAPI.size(); i++) {
+                Player p = (Player) playerAPI.get(i);
+                playerService.save(p);
+            }
         }
 
-        model.addAttribute("allPlayers",playerAPI);
+        model.addAttribute("allPlayers",playerService.findAll());
 
         return "players";
     }
@@ -216,13 +231,6 @@ public class HomeController {
 
         return "Games";
     }
-    
-    @RequestMapping(value="/SackOverflow", method = RequestMethod.GET)
-    public String getHome(Model model) throws IOException {
-
-        return "index";
-    }
-
 
     @RequestMapping(value= "/playerSearch", method = RequestMethod.POST)
     public String searchPlayer(@RequestParam(value = "search", required = false) String search, Model model){
