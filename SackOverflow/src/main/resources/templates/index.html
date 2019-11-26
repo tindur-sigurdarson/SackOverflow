@@ -21,7 +21,6 @@
       </ul>
     </nav>
   </header>
-  <h2>Sack Overflow</h2>
   <!--  <span th:if="${uppahalds.favTeam == 'ARI'}">
       <body style="background-color:powderblue;"/>
     </span>
@@ -34,13 +33,106 @@
   <div th:if="${notandi != null}">
     <h2>Welcome</h2>
     <h2 th:text="${notandi.uName}"/>
-    <h2>Your Favorate team is:</h2>
-    <div th:switch="notandi.favTeam">
-      <span th:case="'0'">
+    <h2>Your Favorite team is:</h2>
+    <div th:switch="${notandi.favTeam}">
+      <span th:case="'RANDOM'">
+        <h2>???</h2>
+      </span>
+      <span th:case="'ARI'">
         <h2>Arizona Cardinals</h2>
       </span>
-      <span th:case="*">
+      <span th:case="'ATL'">
+        <h2>Atlanta Falcons</h2>
+      </span>
+      <span th:case="'BAL'">
+        <h2>Baltimore Ravens</h2>
+      </span>
+      <span th:case="'BUF'">
+        <h2>Buffalo Bills</h2>
+      </span>
+      <span th:case="'CAR'">
+        <h2>Carolina Panthers</h2>
+      </span>
+      <span th:case="'CIN'">
+        <h2>Cincinnati Bengals</h2>
+      </span>
+      <span th:case="'CHI'">
+        <h2>Chicago Bears</h2>
+      </span>
+      <span th:case="'CLE'">
+        <h2>Cleveland Browns</h2>
+      </span>
+      <span th:case="'DAL'">
+        <h2>Dallas Cowboys</h2>
+      </span>
+      <span th:case="'DEN'">
+        <h2>Denver Broncos</h2>
+      </span>
+      <span th:case="'DET'">
+        <h2>Detroit Lions</h2>
+      </span>
+      <span th:case="'GRE'">
+        <h2>Green Bay Packers</h2>
+      </span>
+      <span th:case="'HOU'">
+        <h2>Houston Texans</h2>
+      </span>
+      <span th:case="'IND'">
+        <h2>Indianapolis Colts</h2>
+      </span>
+      <span th:case="'JAC'">
+        <h2>Jacksonville Jaguars</h2>
+      </span>
+      <span th:case="'KAN'">
+        <h2>Kansas City Chiefs</h2>
+      </span>
+      <span th:case="'LAC'">
+        <h2>Los Angeles Chargers</h2>
+      </span>
+      <span th:case="'LAR'">
+        <h2>Los Angeles Rams</h2>
+      </span>
+      <span th:case="'MIA'">
         <h2>Miami Dolphins</h2>
+      </span>
+      <span th:case="'MIN'">
+        <h2>Minnesota Vikings</h2>
+      </span>
+      <span th:case="'NEP'">
+        <h2>Not New England Patriots. Now it is Miami Dolphins</h2>
+      </span>
+      <span th:case="'NOS'">
+        <h2>New Orleans Saints</h2>
+      </span>
+      <span th:case="'NYG'">
+        <h2>New York Giants</h2>
+      </span>
+      <span th:case="'NYJ'">
+        <h2>New York Jets</h2>
+      </span>
+      <span th:case="'OAK'">
+        <h2>Oakland Raiders</h2>
+      </span>
+      <span th:case="'PHI'">
+        <h2>Philadelphia Eagles</h2>
+      </span>
+      <span th:case="'PIT'">
+        <h2>Pittsburgh Steelers</h2>
+      </span>
+      <span th:case="'SAN'">
+        <h2>San Francisco 49ers</h2>
+      </span>
+      <span th:case="'SEA'">
+        <h2>Seattle Seahawks</h2>
+      </span>
+      <span th:case="'TAM'">
+        <h2>Tampa Bay Buccaneers</h2>
+      </span>
+      <span th:case="'TEN'">
+        <h2>Tennessee Titans</h2>
+      </span>
+      <span th:case="'WAS'">
+        <h2>Washington Redskins</h2>
       </span>
     </div>
 
