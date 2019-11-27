@@ -41,11 +41,23 @@ public class HomeController {
     @RequestMapping("/")
     public String Home(Model model, HttpSession session) throws IOException, JSONException {
         User sessionUser = (User) session.getAttribute("loggedInUser");
-
+        String[] arr = {"ARI", "ATL", "BAL", "BUF",
+                "CAR", "CIN", "CHI", "CLE",
+                "DAL", "DEN", "DET", "GRE",
+                "HOU", "IND", "JAC", "KAN",
+                "LAC", "LAR", "MIA", "MIN",
+                "NOS", "NYG", "NYJ", "OAK",
+                "PHI", "PIT", "SAN", "SEA",
+                "TAM", "TEN", "WAS"};
+        int rand = (int)(Math.random()*32);
         List<User> us = userService.findAll();
         for(int i =0; i<us.size();i++){
             if(us.get(i).getuName().equals(sessionUser.getuName())){
-                sessionUser.setFavTeam(us.get(i).getFavTeam());
+                if(us.get(i).getFavTeam().equals("RANDOM")){
+                    sessionUser.setFavTeam(arr[rand]);
+                }else {
+                    sessionUser.setFavTeam(us.get(i).getFavTeam());
+                }
                 break;
             }
         }
@@ -57,12 +69,6 @@ public class HomeController {
         return "Index";
     }
 
-    
-
-    @RequestMapping(value="/addteam", method = RequestMethod.GET)
-    public String addTeamForm(Teams team){
-        return "add-team";
-    }
 
 
     @RequestMapping(value="/Teams", method = RequestMethod.GET)

@@ -18,8 +18,6 @@ public interface TeamRepository extends JpaRepository<Teams,Long> {
     Teams save(Teams team);
     void delete(Teams team);
     List<Teams> findAll();
-    List<Teams> findByName(String name);
     Optional<Teams> findById(long id);
-    List<Teams> findTeamsByDeildAndRank(String deild,int rank);
 
 }

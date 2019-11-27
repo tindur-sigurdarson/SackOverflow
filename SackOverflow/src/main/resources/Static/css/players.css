@@ -4,8 +4,8 @@ body h2 {
 
 table {
   border-collapse: collapse;
-  display: inline-table;
-  width: 24.5%;
+  display: block;
+  width: 25%;
   margin-bottom: 20px;
 }
 
@@ -20,5 +20,5 @@ td{
 }
 
 img {
-  width: auto;
+  width: 100%;
 }

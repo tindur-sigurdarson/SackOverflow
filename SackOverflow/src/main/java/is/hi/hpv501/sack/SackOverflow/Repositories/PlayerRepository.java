@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public interface PlayerRepository extends JpaRepository<Player,Long> {
     Player save(Player player);
-    void delete (Player player);
+
     List<Player> findAll();
     List<Player> findByFirstNameIgnoreCaseOrLastNameIgnoreCase(String firstName, String lastName);
     Optional<Player> findById(long id);

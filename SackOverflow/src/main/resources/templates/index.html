@@ -9,7 +9,10 @@
 </head>
 
 <body>
+
+
   <header>
+    <img class="logo" th:src="@{img/logoprufa.png}"/>
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
@@ -21,15 +24,53 @@
       </ul>
     </nav>
   </header>
-  <!--  <span th:if="${uppahalds.favTeam == 'ARI'}">
-      <body style="background-color:powderblue;"/>
-    </span>
-<p th:text="${notandi}"></p>
-   -->
+
+
   <div th:if="${notandi == null}">
+    <div class="frettir">
+      <h3>Eru nfl lið að fara aftur í old school football?</h3>
+      <p>Mikið hefur verið talað um að NFL sé að færast úr miklum hlaupaleik eða „old school football“ í meiri kastleik. En að undanförnu virðast bestu liðin leggja meiri áherslu á góðan hlaupaleik og góðri vörn frekar en kastleik.</p>
+      <p>Í þessari grein ætlum við að skoða efstu 5 liðin og hvernig þau standa í hlaupaleiknum, kastleiknum og síðast en ekki síst hvar þau standa í varnarleiknum.</p>
+      <h4>1. New England Patriots:</h4>
+      <img class="hlidar" th:src="@{img/hlidar1.jpg}"/>
+      <p class="hlidarp">Þeir eru með 10 sigra og 1 tap sem skilar sér 1. sætinu í AFC. Þrátt fyrir að vera í 1. sæti hafa þeir ekki litið sannfærandi út sóknarlega í deildinni í ár. Leikstjórnandinn þeirra Tom Brady er 42 ára og aldurinn hans er núna fyrst að byrja að sýna sig. Í hlaupaleiknum eru þeir númer 23 og númer 8 í kastleiknum. Heilt yfir eru þeir með 17. bestu sóknina í deildinni. </p>
+
+      <p>En þegar við lítum á Patriots varnarlega séð sjáum við ástæðuna afhverju þeir eru á toppnum í AFC; Númer 1 vörninn í deildinni í töpuðum boltum (e. turnover) með 20 varnargrip (e. interception) og náð 9 missaða bolta (e. fumble recovery) ásamt því að vera númer 2 vörnin í fæstu yarda gefna fyrir hvern leik (e. ypg).</p>
+
+      <h4>2. San Francisco 49ers:</h4>
+      <a href="/login">Login to read more!</a>
+    </div>
+    <div class="frettir">
+      <h3>The Man, The Myth, The Legend Lamar Jackson</h3>
+      <p>Lamar Jackson leikstjórnandinn hjá Baltimore ravens er að eiga eitt af bestu tímabilum sem hefur sést frá leikstjórnenda stöðunni,
+        eftir 11 leiki er hann með 2427 yarda kastaða, 876 hlaupa yarda og 30 heildar snertimörk.
+        Besta tímabil sem  leikstjórnandi hefur átt með að hlaupa boltanum var michael Vick árið 2006 með Atlanta Falcons en þar hljóp hann
+        fyrir 1039 yördum og hann gerði það í 16 leikjum.
+        Margir eru að bera saman þessa tvo leikmenn þar sem leikurinn þeirra snýst um að hlaupa aðalega með boltann og opna vörnina með djúpum boltum.
+        Þetta er góð viðlíking þar sem Lamar mun líklegast enda með besta leikstjórnenda tímabil fyrir hlaupa yarda.
+        Lamar var draftaður nr.32 í NFL nýliðavalinu árið 2018 og hann var með markmið að sanna fyrir liðinum sem völdu hann ekki að þau myndu
+        sjá eftir því og hann hefur sannalega gert það.</p>
+      <p>Fyrsta tímibilið hjá Lamar Jackson var hann vara leikstjórnandinn fyrir Baltimore Ravens en hann vann á endaum byrjunarstöðuna yfir Joe Flaco.  Liðin áttu erfitt með að stoppa Lamar fyrst en Chargers sýndu veikleika hans sem kastara í Wild card umferðinni í playoffs.  Þessi leikur fékk mikla umfjöllun því þessi lið mættust í viku 16 á tímabilinu en þar unnu Ravens sannfærandi sigur 22-10 en hvað breyttist?</p>
+      <a href="/login">Login to read more!</a>
+    </div>
+    <div class="frettir">
     <h3>Heldur sigurganga Ravens áfram?</h3>
+      <p>Lamar Jackson leikstjórnandinn hjá Baltimore ravens er að eiga eitt af bestu tímabilum sem hefur sést frá leikstjórnenda stöðunni,
+      eftir 11 leiki er hann með 2427 yarda kastaða, 876 hlaupa yarda og 30 heildar snertimörk.
+      Besta tímabil sem  leikstjórnandi hefur átt með að hlaupa boltanum var michael Vick árið 2006 með Atlanta Falcons en þar hljóp hann
+      fyrir 1039 yördum og hann gerði það í 16 leikjum.
+      Margir eru að bera saman þessa tvo leikmenn þar sem leikurinn þeirra snýst um að hlaupa aðalega með boltann og opna vörnina með djúpum boltum.
+      Þetta er góð viðlíking þar sem Lamar mun líklegast enda með besta leikstjórnenda tímabil fyrir hlaupa yarda.
+      Lamar var draftaður nr.32 í NFL nýliðavalinu árið 2018 og hann var með markmið að sanna fyrir liðinum sem völdu hann ekki að þau myndu
+      sjá eftir því og hann hefur sannalega gert það.</p>
     <a href="/login">Login to read more!</a>
+    </div>
+    <div class="frettir">
+      <h3>Vinnur Miami Dolphins Superbowl á næsta ári?</h3>
+      <a href="/login">Login to read more!</a>
+    </div>
   </div>
+
   <div th:if="${notandi != null}">
     <h2>Welcome</h2>
     <h2 th:text="${notandi.uName}"/>
@@ -135,11 +176,70 @@
         <h2>Washington Redskins</h2>
       </span>
     </div>
+    <div class="frettir">
+      <h3>Eru nfl lið að fara aftur í old school football?</h3>
+      <p>Mikið hefur verið talað um að NFL sé að færast úr miklum hlaupaleik eða „old school football“ í meiri kastleik. En að undanförnu virðast bestu liðin leggja meiri áherslu á góðan hlaupaleik og góðri vörn frekar en kastleik.</p>
+      <p>Í þessari grein ætlum við að skoða efstu 5 liðin og hvernig þau standa í hlaupaleiknum, kastleiknum og síðast en ekki síst hvar þau standa í varnarleiknum.</p>
+      <h4>1. New England Patriots:</h4>
+      <img class="hlidar" th:src="@{img/hlidar1.jpg}"/>
+      <p class="hlidarp">Þeir eru með 10 sigra og 1 tap sem skilar sér 1. sætinu í AFC. Þrátt fyrir að vera í 1. sæti hafa þeir ekki litið sannfærandi út sóknarlega í deildinni í ár. Leikstjórnandinn þeirra Tom Brady er 42 ára og aldurinn hans er núna fyrst að byrja að sýna sig. Í hlaupaleiknum eru þeir númer 23 og númer 8 í kastleiknum. Heilt yfir eru þeir með 17. bestu sóknina í deildinni. </p>
 
+      <p>En þegar við lítum á Patriots varnarlega séð sjáum við ástæðuna afhverju þeir eru á toppnum í AFC; Númer 1 vörninn í deildinni í töpuðum boltum (e. turnover) með 20 varnargrip (e. interception) og náð 9 missaða bolta (e. fumble recovery) ásamt því að vera númer 2 vörnin í fæstu yarda gefna fyrir hvern leik (e. ypg).</p>
 
+      <h4>2. San Francisco 49ers:</h4>
+      <img class="hlidar" th:src="@{img/hlidar2.jpg}"/>
+      <p class="hlidarp">Líkt og Patriots eru þeir með 10 sigra og 1 tap og eru í 1. sæti í NFC. Velgengni 49ers komu mörgum á óvart þar sem undanfarin 4 ár hafa þeir verið arfaslakir með samtals aðeins 19 sigra og 47 töp. En með aðalþjálfara Kyle Shanahan á 3. ári sínu og nýliðastjörnunni Nick Bosa hafa þeir litið út fyrir að vera besta liðið í NFL.</p>
+      <p>49ers eru númer 2 í hlaupaleiknum á eftir Baltimore Ravens sem verður fjallað um seinna í greininni. 49ers eru númer 14 í kastleiknum. Samtals með 6. bestu sóknina. Varnarleikur þeirra er sá besti í deildinni í fæstu yarda gefna fyrir hvern leik (e. ypg) ásamt því að vera númer 4 í töpuðu boltum (e. turnover), 11 varnargrip og náð 12 missaða bolta (e. fumble recovery).</p>
+      <h4>3. Baltimore Ravens:</h4>
+      <img class="hlidar" th:src="@{img/hlidar3.png}"/>
+      <p class="hlidarp">Þeir eru með 9 sigra og 2 töp og eru í 2. sæti í AFC. Það sem stendur mest út úr með Ravens í ár er annað árs leikstjórnandinn þeirra Lamar Jackson sem er að eiga met tímabil með 2427 kastyarda, ótrúlega 876 hlaupayarda, 25 snertimörk og 5 köst sem urðu varnargrip (e. interception). Enginn annar leikstjórnandi hefur náð yfir 3000 kastyarda og 1500 hlaupayarda í fyrstu tveimur tímabilunum sínum.</p>
+
+      <p>Ravens eru númer 1 í hlaupaleiknum með 210yarda í leik að meðaltali og næstu lið fyrir neðan eru með 145 hlaupayarda. 65yarda munur á númer 1 og 2 hlaupaliðunum er sturlaður munur en þar kemur Lamar Jackson inn með rúma 80 hlaupayarda í leik að meðaltali. Ravens eru einnig það lið sem hleypur oftast með boltan hlutfallslega eða 55% Ravens eru númer 19 í kastleiknum og samtals númer 2 sóknina. Í varnaleiknum eru þeir númer 6 í deildinni í töpuðum boltum (e. turnover) með 11 varnargrip og náð 7 missuðum boltum (e. fumble recovery) og eru númer 11 í  fæstu yarda gefna í leik (e. ypg).</p>
+      <h4>4. New Orleans Saints</h4>
+      <img class="hlidar" th:src="@{img/hlidar5.jpg}"/>
+      <p class="hlidarp">Þeir hafa unnið 9 sigra og 2 töp og eru númer 2 í NFC. Mikill ótti varð hjá Saints um að tímabilið þeirra væri búið þegar aðal leikstjórnandinn þeirra Drew Brees meiddist í viku 2 á móti LA Rams og var meiddur í 5 umferðir. En gæði stjórans Sean Payton að viðhalda ágætri sókn með vara leikstjórnandanum Teddy Bridgewater og fjölhæfa þriðja leikstjórnandann Taysom Hill skilaði sér með sigrum í öllum leikjunum meðan Drew Brees var frá vegna meiðsla.</p>
+
+      <p>Saints eru númer 17 í hlaupaleiknum, númer 9 í kastleiknum og samtals með 12. bestu sóknina.
+        Í varnaleiknum eru þeir númer 10 í yarda gefna fyrir hvern leik og í 17. sæti í töpuðum boltum með 8 varnargrip og náð 7 missuðum boltum</p>
+
+      <h4>5. Seattle Seahawks</h4>
+      <img class="hlidar" th:src="@{img/hlidar4.jpg}"/>
+      <p class="hlidarp">Þeir hafa unnið 9 sigra og 2 töp og eru númer 3 í NFC. Seahawks hafa staðið sig vel með leikstjórnandanum Russell Wilson sem virðist verða betri og klókari með hverju árinu. Ef það væri ekki fyrir velgengni Lamar Jackson væri Russell Wilson öruggur með að fá „MVP“ (Most valueable player) verðlaunin. Seahawks er eina liðið á tímabilinu sem hefur náð sigri á 49ers og með þessu áframhaldi eru þeir líklegastir til að vinna NFC deildina og þar með sæti í Super Bowl í febrúar.</p>
+
+      <p>Seahawks eru númer 6 í hlaupaleiknum, númer 11 í kastleiknum og samtals með 5. bestu sóknina (sóknaryarda í leik að meðaltali). Í varnarleiknum eru þeir númer 23 í gefna yarda í leik að meðaltali og númer 3 í töpuðum boltum með 10 varnargrip og náð 14 missuðum boltum.</p>
+
+      <h4>Heilt yfir litið má sjá töfluna hér fyrir neðan:</h4>
+      <img class="taflamynd" th:src="@{img/tafla.jpg}"/>
+      <p>Í upphafi greinarinnar var sett fram tilgátan að bestu liðin leggi áherslu á hlaupaleik og góða vörn eða „old school football“ og við sjáum það að í top 5 liðunum í NFL erum við með 3 af top 6 bestu hlaupaliðum deildarinnar en ekki 1 lið úr top 8 í kastleiknum. Top 5 liðin í kastleiknum eru eftirfarandi:</p>
+      <p class="numer">1. Dallas Cowboys (11. sæti í NFL)</p>
+      <p class="numer">2. KC Chiefs (10. sæti í NFL)</p>
+      <p class="numer">3. Atlanta Falcons (27. sæti í NFL)</p>
+      <p class="numer">4. Tampa Bay Bucs (24. sæti í NFL)</p>
+      <p class="numer">5. LA Chargers (22. sæti í NFL)</p>
+      <p>Hérna sjáum við að ekkert af þeim eru í top 9 í NFL en hægt er að koma með rök fyrir því að þegar lið er að tapa þurfa þeir að kasta meira til þess að komast aftur inn í leikinn.</p>
+      <p>Það sem eru enþá meira sláandi niðurstöður er að við erum með 4 af top 6 liðunum í töpuðum boltum hjá vörninni.</p>
+      <p>- Eyjólfur Brynjar Brynjólfsson</p>
+    </div>
+    <div class="frettir">
+      <h3>The Man, The Myth, The Legend Lamar Jackson</h3>
+      <p>Lamar Jackson leikstjórnandinn hjá Baltimore ravens er að eiga eitt af bestu tímabilum sem hefur sést frá leikstjórnenda stöðunni,
+        eftir 11 leiki er hann með 2427 yarda kastaða, 876 hlaupa yarda og 30 heildar snertimörk.
+        Besta tímabil sem  leikstjórnandi hefur átt með að hlaupa boltanum var michael Vick árið 2006 með Atlanta Falcons en þar hljóp hann
+        fyrir 1039 yördum og hann gerði það í 16 leikjum.
+        Margir eru að bera saman þessa tvo leikmenn þar sem leikurinn þeirra snýst um að hlaupa aðalega með boltann og opna vörnina með djúpum boltum.
+        Þetta er góð viðlíking þar sem Lamar mun líklegast enda með besta leikstjórnenda tímabil fyrir hlaupa yarda.
+        Lamar var draftaður nr.32 í NFL nýliðavalinu árið 2018 og hann var með markmið að sanna fyrir liðinum sem völdu hann ekki að þau myndu
+        sjá eftir því og hann hefur sannalega gert það.</p>
+      <p>Fyrsta tímibilið hjá Lamar Jackson var hann vara leikstjórnandinn fyrir Baltimore Ravens en hann vann á endaum byrjunarstöðuna yfir Joe Flaco.  Liðin áttu erfitt með að stoppa Lamar fyrst en Chargers sýndu veikleika hans sem kastara í Wild card umferðinni í playoffs.  Þessi leikur fékk mikla umfjöllun því þessi lið mættust í viku 16 á tímabilinu en þar unnu Ravens sannfærandi sigur 22-10 en hvað breyttist?</p>
+      <p>Hefðbundin varnarlið í NFL spila með fjóra varnarlínumenn(DL), þrjá varnarmenn sem verja miðjuna á vellinum(line backers), 2 varnarmenn sem verja endana á vellinum(Safeties) og þá sem eru að verja á móti þeim sem grípa boltann(Cornerbacks).  Chargers spiluðu þessa hefðbundu vörn á móti Ravens í viku 16 en þeir breyttu algjörlega um taktík í playoffs.  Í staðinn fyrir tvo safeties spiluðu þeir með auka mann sem verndaði miðjuna á vellinum, tóku hlaupa leikinn alveg í burtu og mönuðu Lamar að kasta boltanum á þá. Þessi taktík svínvirkaði þar sem þeir unnu 23-17 og var það stórum parti varnarmanninum Derwin james(spilaði sem auka LB) að þakka.</p>
+      <p>Ravens vissu að þetta var veikleiki hjá þeim sem þeir þurftu að laga og þeir gerðu það með að velja einn fljótasta grípara(Marquise brown) í nýliðavalinu núna í ár og Lamar er einnig búinn að sýna mikla framför í kastleiknum sýnum frá því í fyrra.  Núna geta lið ekki spilað svipaða vörn og Chargers gerðu því veikleikinn á þannig tegund af vörn er djúpur bolti því þeir eru bara með einn leikmann sem verndar endann á vellinum.</p>
+      <p>Liðin í NFL eru ekki enþá búin að finna veikleikana hjá Lamar  jackson og Ravens liðinu. Hann mun liklegast enda sem MVP(Most Valueable Player) í NFL og Ravens eiga góðan möguleika á að vinna SuberBowl í ár.</p>
+      <p>-Þorsteinn Sigurðsson</p>
+    </div>
+    <div class="frettir">
     <h3>Heldur sigurganga Ravens áfram?</h3>
-    <p>Ravens(8-2) - Rams(6-4)</p>
-    <p>Baltimore Ravens, með Lamar Jackson í aðahlutverki, hafa sundurspilað hvert liðið á fætur öðru eftir
+      <p>Ravens(8-2) - Rams(6-4)</p>
+      <p>Baltimore Ravens, með Lamar Jackson í aðahlutverki, hafa sundurspilað hvert liðið á fætur öðru eftir
       slaka byrjun liðsins á tímabilinu. Eftir tvö töp í röð í byrjun tímabils hefur spilamennska liðsins verið óáðfinnanleg.
       Liðið hefur unnið sex leiki í röð og fáa veikleika er að finna í spilamennskunni. Niðurstaðan eru 34 stig skoruð
       og 16 stig fengin að meðaltali í leikjunum sex og liðið virðist fullt sjálfstrausts og stefnir í átt að úrslitakeppninni.
@@ -147,7 +247,13 @@
       Í þessari sex leikja sigurgöngu hefur liðið sigrað Seatle Seahawks(8-2) og New England Patriots (9-1) en Patriots
       voru taplausir fyrir heimaleikinn sinn gegn Ravens.
       Heldur vörn Rams út gegn sterkri sókn Ravens eða heldur sigurganga Ravens-liðsins áfram?</p>
-    <p>- Arnar Ingi Njarðarson</p>
+      <p>- Arnar Ingi Njarðarson</p>
+    </div>
+    <div class="frettir">
+      <h3>Vinnur Miami Dolphins Superbowl á næsta ári?</h3>
+      <p>Já!</p>
+      <p>-Ágúst Logi Pétursson</p>
+    </div>
   </div>
 
 </body>

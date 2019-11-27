@@ -15,23 +15,6 @@ public interface APIService {
     List<Game> getAllGames() throws  IOException;
 
     List<Player> getImage() throws IOException;
-
-    String getGamesByWeek(int weekNr) throws IOException;
-
-    String getGameScoreByDay(String date, String away, String home, int nr) throws IOException;
-
-    String getGamePlayByPlay(String date, String away, String home, int nr) throws IOException;
-
-    String getPlayerStats(String playerName) throws IOException;
-
-    String getTeamStats(String teamName) throws IOException;
-
-    String getLatestUpdates() throws IOException;
-
-    String getAllInjuredPlayers() throws IOException;
-
-    String getInjuredPlayersByTeam(String teamName) throws IOException;
-
 }
 
 
