@@ -23,10 +23,6 @@ public class PlayerServiceImplementation implements PlayerService {
         return repository.save(player);
     }
 
-    @Override
-    public void delete(Player player) {
-        repository.delete(player);
-    }
 
     @Override
     public List<Player> findAll() {

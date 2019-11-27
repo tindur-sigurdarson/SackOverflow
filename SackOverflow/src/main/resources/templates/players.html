@@ -10,6 +10,7 @@
 
 <body>
   <header>
+    <img class="logo" th:src="@{img/logoprufa.png}"/>
     <h1>Sack Overflow</h1>
     <nav>
       <ul class="nav__links">
@@ -47,20 +48,23 @@
     </thead>
     <tbody>
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'QB'}">
-      <td>
+      <td th:if="${allPlayers.mynd !=null}">
       <img th:src="${allPlayers.mynd}"/>
       </td>
-        <!--img th:src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/ABE643008.png"/-->
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.passAttempts}">
-      <td th:text="${allPlayers.passCompletion}">
-      <td th:text="${allPlayers.passYards}">
-      <td th:text="${allPlayers.passTD}">
-      <td th:text="${allPlayers.passInt}">
+      <td th:if="${allPlayers.mynd ==null}">
+        <img src="http://static.nfl.com/static/content/public/static/img/fantasy/transparent/200x200/ABE643008.png"/>
+      </td>
+
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.passAttempts}"/>
+      <td th:text="${allPlayers.passCompletion}"/>
+      <td th:text="${allPlayers.passYards}"/>
+      <td th:text="${allPlayers.passTD}"/>
+      <td th:text="${allPlayers.passInt}"/>
     </tr>
     </tbody>
   </table>
@@ -85,16 +89,16 @@
     <tbody>
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'RB'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.rushAttempts}">
-      <td th:text="${allPlayers.rushYards}">
-      <td th:text="${allPlayers.rushAvg}">
-      <td th:text="${allPlayers.rushTD}">
-      <td th:text="${allPlayers.fumbles}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.rushAttempts}"/>
+      <td th:text="${allPlayers.rushYards}"/>
+      <td th:text="${allPlayers.rushAvg}"/>
+      <td th:text="${allPlayers.rushTD}"/>
+      <td th:text="${allPlayers.fumbles}"/>
     </tr>
     </tbody>
   </table>
@@ -118,15 +122,15 @@
     <tbody>
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'WR'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.targets}">
-      <td th:text="${allPlayers.receptions}">
-      <td th:text="${allPlayers.recYards}">
-      <td th:text="${allPlayers.recTD}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.targets}"/>
+      <td th:text="${allPlayers.receptions}"/>
+      <td th:text="${allPlayers.recYards}"/>
+      <td th:text="${allPlayers.recTD}"/>
     </tr>
     </tbody>
   </table>
@@ -150,15 +154,15 @@
     <tbody>
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'TE'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.targets}">
-      <td th:text="${allPlayers.receptions}">
-      <td th:text="${allPlayers.recYards}">
-      <td th:text="${allPlayers.recTD}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.targets}"/>
+      <td th:text="${allPlayers.receptions}"/>
+      <td th:text="${allPlayers.recYards}"/>
+      <td th:text="${allPlayers.recTD}"/>
     </tr>
     </tbody>
   </table>
@@ -185,16 +189,16 @@
      || allPlayers.position == 'SS' || allPlayers.position == 'DT' || allPlayers.position == 'ILB' || allPlayers.position == 'DE'
      || allPlayers.position == 'OLB' || allPlayers.position == 'MLB' || allPlayers.position == 'FS'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.position}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.tackleTotal}">
-      <td th:text="${allPlayers.sacks}">
-      <td th:text="${allPlayers.interceptions}">
-      <td th:text="${allPlayers.fumForced}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.position}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.tackleTotal}"/>
+      <td th:text="${allPlayers.sacks}"/>
+      <td th:text="${allPlayers.interceptions}"/>
+      <td th:text="${allPlayers.fumForced}"/>
     </tr>
     </tbody>
   </table>
@@ -219,16 +223,16 @@
     <tbody>
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'K'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
-      <td th:text="${allPlayers.fgAtt}">
-      <td th:text="${allPlayers.fgMade}">
-      <td th:text="${allPlayers.fgLng}">
-      <td th:text="${allPlayers.xpAtt}">
-      <td th:text="${allPlayers.xpMade}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
+      <td th:text="${allPlayers.fgAtt}"/>
+      <td th:text="${allPlayers.fgMade}"/>
+      <td th:text="${allPlayers.fgLng}"/>
+      <td th:text="${allPlayers.xpAtt}"/>
+      <td th:text="${allPlayers.xpMade}"/>
     </tr>
     </tbody>
   </table>
@@ -242,6 +246,7 @@
       <th>First Name</th>
       <th>Last Name</th>
       <th>Team</th>
+      <th>Position</th>
       <th>Games Played</th>
     </tr>
     </thead>
@@ -249,11 +254,12 @@
     <tr th:each="allPlayers : ${allPlayers}" th:if="${allPlayers.position == 'OT'
      || allPlayers.position == 'G' || allPlayers.position == 'C' || allPlayers.position == 'P'}">
       <td><img th:src="${allPlayers.mynd}"/></td>
-      <td th:text="${allPlayers.jersey}">
-      <td th:text="${allPlayers.firstName}">
-      <td th:text="${allPlayers.lastName}">
-      <td th:text="${allPlayers.team}">
-      <td th:text="${allPlayers.gamesPlayed}">
+      <td th:text="${allPlayers.jersey}"/>
+      <td th:text="${allPlayers.firstName}"/>
+      <td th:text="${allPlayers.lastName}"/>
+      <td th:text="${allPlayers.team}"/>
+      <td th:text="${allPlayers.position}"/>
+      <td th:text="${allPlayers.gamesPlayed}"/>
     </tr>
     </tbody>
   </table>

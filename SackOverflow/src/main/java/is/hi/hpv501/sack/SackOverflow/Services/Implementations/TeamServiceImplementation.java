@@ -34,18 +34,9 @@ public class TeamServiceImplementation implements TeamService {
     }
 
     @Override
-    public List<Teams> findByName(String name) {
-        return repository.findByName(name);
-    }
-
-    @Override
     public Optional<Teams> findById(long id) {
         return repository.findById(id);
     }
 
-    @Override
-    public List<Teams> findTeamsByDeildAndRank(String deild, int rank) {
-        return findTeamsByDeildAndRank(deild,rank);
-    }
 
 }

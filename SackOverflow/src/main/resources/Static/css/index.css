@@ -1,3 +1,39 @@
 body h2 {
   padding-left: 20px;
 }
+.frettir{
+  margin-left: 200px;
+  margin-right: 200px;
+  margin-top: 20px;
+  border: 5px solid pink;
+  border-radius: 5px;
+  padding: 5px;
+
+}
+.frettir h3{
+  padding-left: 30%;
+}
+
+.frettir a{
+  padding-left: 40%;
+  transition: all 0.3s ease 0s;
+}
+.frettir a:hover {
+  color: #0088a9;
+}
+.frettir p {
+  padding-top: 5px;
+}
+
+h4{
+  padding-left: 5px;
+  padding-top: 15px;
+}
+.numer{
+  padding-left: 20px;
+}
+
+.hlidar{
+  width: 250px;
+  float: right;
+}

@@ -27,17 +27,23 @@ li, a {
 header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 30px 10%;
+  padding: 0px;
 }
 
+.logo{
+  width: 10%;
+  padding-left: 15px;
+  padding-top: 2px;
+}
 .nav__links {
   list-style: none;
+    padding-left: 600px;
 }
 
 .nav__links li {
-  display: inline-block;
-  padding: 0px 20px;
+    display: inline-block;
+    padding: 0px 20px;
+
 }
 
 .nav__links li a {

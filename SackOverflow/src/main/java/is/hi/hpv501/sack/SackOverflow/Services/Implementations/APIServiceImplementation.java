@@ -27,8 +27,9 @@ public class APIServiceImplementation implements APIService {
 
     public APIServiceImplementation() {
     }
+
     @Override
-    public List<Player> getImage(){
+    public List<Player> getImage() {
         try {
             String token = apiKey + ":3DUbP77j";
             byte[] src = token.getBytes();
@@ -49,7 +50,7 @@ public class APIServiceImplementation implements APIService {
                 JSONObject o = new JSONObject(line);
                 JSONObject obj = o.getJSONObject("activeplayers");
                 JSONArray arr = obj.getJSONArray("playerentry");
-                for(int i=0; i<arr.length();i++){
+                for (int i = 0; i < arr.length(); i++) {
                     Player pl = new Player();
                     JSONObject c = (JSONObject) arr.get(i);
 
@@ -62,17 +63,18 @@ public class APIServiceImplementation implements APIService {
                     listi.add(pl);
 
                 }
-               return listi;
+                return listi;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
+
     @Override
     public List<Player> getAllPlayers() throws IOException {
         try {
-            String token = apiKey+":3DUbP77j";
+            String token = apiKey + ":3DUbP77j";
             byte[] src = token.getBytes();
             URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/latest/cumulative_player_stats.json");
             String encoding = Base64.getUrlEncoder().encodeToString(src);
@@ -80,7 +82,7 @@ public class APIServiceImplementation implements APIService {
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setRequestProperty("Authorization", "Basic " + encoding);
-            InputStream content = (InputStream)connection.getInputStream();
+            InputStream content = (InputStream) connection.getInputStream();
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
             String line;
@@ -303,14 +305,14 @@ public class APIServiceImplementation implements APIService {
                     play.setPosition(position);
                     play.setGamesPlayed(gamesplayed);
                     //try {
-                        play.setMynd(myndalisti.get(i).getMynd());
-                   // }catch (Exception e){
+                    play.setMynd(myndalisti.get(i).getMynd());
+                    // }catch (Exception e){
 
                     //}
                     //bæta leikmönnum í arraylist
 
-                    for(int j =0; j<myndalisti.size(); j++) {
-                        if(myndalisti.get(j).getPlayerID()==play.getPlayerID()) {
+                    for (int j = 0; j < myndalisti.size(); j++) {
+                        if (myndalisti.get(j).getPlayerID() == play.getPlayerID()) {
                             play.setMynd(myndalisti.get(j).getMynd());
                         }
                     }
@@ -319,7 +321,7 @@ public class APIServiceImplementation implements APIService {
                 return leikmannalisti;
             }
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -327,11 +329,10 @@ public class APIServiceImplementation implements APIService {
     }
 
 
-
     @Override
     public List<Teams> getAllTeams() throws IOException {
         try {
-            String token = apiKey+":3DUbP77j";
+            String token = apiKey + ":3DUbP77j";
             byte[] src = token.getBytes();
             URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/division_team_standings.json");
             String encoding = Base64.getUrlEncoder().encodeToString(src);
@@ -339,7 +340,7 @@ public class APIServiceImplementation implements APIService {
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setRequestProperty("Authorization", "Basic " + encoding);
-            InputStream content = (InputStream)connection.getInputStream();
+            InputStream content = (InputStream) connection.getInputStream();
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
             //Listi búinn til fyrir lið
@@ -354,7 +355,7 @@ public class APIServiceImplementation implements APIService {
                 // JSON array búið til
                 JSONArray divi = obj2.getJSONArray("division");
                 // sótt deildir
-                for (int i =0; i<divi.length(); i++) {
+                for (int i = 0; i < divi.length(); i++) {
                     JSONObject c = (JSONObject) divi.get(i);
 
                     JSONArray teamentry = c.getJSONArray("teamentry");
@@ -381,7 +382,7 @@ public class APIServiceImplementation implements APIService {
                         String win = W.getString("#text");
                         String loss = L.getString("#text");
                         String ties = T.getString("#text");
-                        String record = win+"-"+loss+"-"+ties;
+                        String record = win + "-" + loss + "-" + ties;
                         lidstats.setRecord(record);
 
                         // lið sett í lista
@@ -391,16 +392,17 @@ public class APIServiceImplementation implements APIService {
             }
 
             return listi;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
         return null;
     }
+
     @Override
     public List<Game> getAllGames() throws IOException {
         try {
-            String token = apiKey+":3DUbP77j";
+            String token = apiKey + ":3DUbP77j";
             byte[] src = token.getBytes();
             URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/full_game_schedule.json");
             String encoding = Base64.getUrlEncoder().encodeToString(src);
@@ -408,7 +410,7 @@ public class APIServiceImplementation implements APIService {
             connection.setRequestMethod("GET");
             connection.setDoOutput(true);
             connection.setRequestProperty("Authorization", "Basic " + encoding);
-            InputStream content = (InputStream)connection.getInputStream();
+            InputStream content = (InputStream) connection.getInputStream();
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
             //Listi búinn til fyrir lið
@@ -420,7 +422,7 @@ public class APIServiceImplementation implements APIService {
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("fullgameschedule");
                 JSONArray jsonArray = obj2.getJSONArray("gameentry");
-                for(int i =0; i<jsonArray.length();i++) {
+                for (int i = 0; i < jsonArray.length(); i++) {
                     Game leikir = new Game();
                     JSONObject c = (JSONObject) jsonArray.get(i);
                     leikir.setId(c.getInt("id"));
@@ -438,51 +440,9 @@ public class APIServiceImplementation implements APIService {
 
             }
             return listi;
-        } catch(Exception e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-
-
-    @Override
-    public String getGamesByWeek(int weekNr) throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getGameScoreByDay(String date, String away, String home, int nr) throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getGamePlayByPlay(String date, String away, String home, int nr) throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getPlayerStats(String playerName) throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getTeamStats(String teamName) throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getLatestUpdates() throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getAllInjuredPlayers() throws IOException {
-        return null;
-    }
-
-    @Override
-    public String getInjuredPlayersByTeam(String teamName) throws IOException {
-        return null;
-    }
-
 }
