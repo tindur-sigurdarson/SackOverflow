@@ -5,11 +5,15 @@ import is.hi.hpv501.sack.SackOverflow.Entities.User;
 import is.hi.hpv501.sack.SackOverflow.Services.APIService;
 import is.hi.hpv501.sack.SackOverflow.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.server.ResponseStatusException;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -17,7 +21,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.List;
 
-@Controller
+@RestController
 public class UserController {
     private UserService userService;
     @Autowired
@@ -25,61 +29,44 @@ public class UserController {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/signup", method = RequestMethod.GET)
-    public String signUpGET(User user){
-        return "signup";
-    }
+
     @RequestMapping(value = "/signup", method = RequestMethod.POST)
-    public String signUpPOST(@Valid User user, BindingResult result, Model model) throws IOException {
-        if(result.hasErrors()){
-            return "signup";
+    public User signUpPOST(@Valid @RequestBody User user, BindingResult result) {
+        if (result.hasErrors()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error...");
         }
         User exists = userService.findByUName(user.getuName());
         if(exists == null){
-        userService.save(user);
+            return userService.save(user);
         }else{
-            return null;
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Username unavailable");
         }
-        model.addAttribute("users", userService.findAll());
-        return "login";
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String usersGET(Model model){
-        model.addAttribute("users", userService.findAll());
-        return "users";
-    }
-
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String loginGET(User user){
-        return "login";
+    public List<User> usersGET() {
+        return userService.findAll();
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPOST(@Valid User user, BindingResult result, Model model, HttpSession session){
-
-        if(result.hasErrors()){
-            return "login";
+    public User loginPOST(@Valid @RequestBody User user, BindingResult result, HttpSession session) {
+        if (result.hasErrors()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "");
         }
-        model.addAttribute("users",userService.findAll());
         User exists = userService.login(user);
-
-        if(exists != null){
-            session.setAttribute("loggedInUser", user);
-            return "redirect:/";
-        }
-        return null;
+        if (exists != null) {
+            session.setAttribute("LoggedInUser", user);
+            return exists;
+        } else
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Login unsuccessful");
     }
 
     @RequestMapping(value = "/loggedin", method = RequestMethod.GET)
-    public String loggedinGET(HttpSession session, Model model){
-        model.addAttribute("users",userService.findAll());
-
-        User sessionUser = (User) session.getAttribute("loggedInUser");
-        if(sessionUser  != null){
-            model.addAttribute("loggedInUser", sessionUser);
-            return "loggedInUser";
-        }
-        return "redirect:/";
+    public User loggedinGET(HttpSession session) {
+        User sessionUser = (User) session.getAttribute("LoggedInUser");
+        if (sessionUser != null) {
+            return sessionUser;
+        } else
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "You have to be logged in");
     }
 }
