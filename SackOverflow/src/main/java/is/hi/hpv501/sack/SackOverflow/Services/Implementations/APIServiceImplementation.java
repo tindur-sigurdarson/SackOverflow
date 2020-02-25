@@ -19,10 +19,11 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+
 public class APIServiceImplementation implements APIService {
 
     private String linkur = "";
-    private String apiKey = "35c57403-430a-49e1-bca6-c14fa2";
+    private String apiKey = "4eff6cff-5687-4bac-bb45-fdc627";
 
 
     public APIServiceImplementation() {
@@ -76,7 +77,7 @@ public class APIServiceImplementation implements APIService {
         try {
             String token = apiKey + ":3DUbP77j";
             byte[] src = token.getBytes();
-            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/latest/cumulative_player_stats.json");
+            URL url = new URL("https://api.mysportsfeeds.com/v1.2/pull/nfl/2019-regular/cumulative_player_stats.json");
             String encoding = Base64.getUrlEncoder().encodeToString(src);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
@@ -89,7 +90,8 @@ public class APIServiceImplementation implements APIService {
             List<Player> myndalisti = getImage();
             List<Player> leikmannalisti = new ArrayList<Player>();
             while ((line = in.readLine()) != null) {
-                //System.out.println(line);
+                 //System.out.println(line);
+
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("cumulativeplayerstats");
                 JSONArray jsonArr = obj2.getJSONArray("playerstatsentry");
@@ -305,17 +307,17 @@ public class APIServiceImplementation implements APIService {
                     play.setPosition(position);
                     play.setGamesPlayed(gamesplayed);
                     //try {
-                    play.setMynd(myndalisti.get(i).getMynd());
+                    //play.setMynd(myndalisti.get(i).getMynd());
                     // }catch (Exception e){
 
                     //}
                     //bæta leikmönnum í arraylist
 
-                    for (int j = 0; j < myndalisti.size(); j++) {
+                    /*for (int j = 0; j < myndalisti.size(); j++) {
                         if (myndalisti.get(j).getPlayerID() == play.getPlayerID()) {
                             play.setMynd(myndalisti.get(j).getMynd());
                         }
-                    }
+                    }*/
                     leikmannalisti.add(play);
                 }
                 return leikmannalisti;
@@ -343,12 +345,11 @@ public class APIServiceImplementation implements APIService {
             InputStream content = (InputStream) connection.getInputStream();
             BufferedReader in =
                     new BufferedReader(new InputStreamReader(content));
-            //Listi búinn til fyrir lið
             List<Teams> listi = new ArrayList<Teams>();
 
             String line;
             while ((line = in.readLine()) != null) {
-                //System.out.println(line);
+                System.out.println(line);
                 //  JSON obj búinn til
                 JSONObject obj = new JSONObject(line);
                 JSONObject obj2 = obj.getJSONObject("divisionteamstandings");
