@@ -1,0 +1,12 @@
+
+###
+GET http://localhost:8443/
+###
+GET http://localhost:8443/players
+###
+GET http://localhost:8443/Games
+###
+GET http://localhost:8443/users
+###
+GET http://localhost:8443/loggedin
+###
